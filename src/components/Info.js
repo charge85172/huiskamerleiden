@@ -1,131 +1,66 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { MessagesSquare, Paintbrush, Coffee, ArrowRight } from 'lucide-react-native';
-import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
+import { BlurView } from 'expo-blur';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Info() {
+  const { t } = useLanguage();
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>
-        Wat kun je <Text style={styles.highlight}>hier doen?</Text>
+        {t.info.titleStart}<Text style={styles.highlight}>{t.info.titleHighlight}</Text>
       </Text>
 
-      <BlurView intensity={20} tint="dark" style={styles.card}>
-        <Coffee size={32} color="#818cf8" style={styles.icon} />
-        <Text style={styles.cardTitle}>Ontmoeten</Text>
-        <Text style={styles.cardText}>
-          Chill met mensen die in dezelfde fase zitten als jij. Of je nu studeert, werkt of even tussen de bedrijven door zit: hier vind je je community.
-        </Text>
+      <BlurView intensity={30} tint="dark" style={styles.card}>
+        <Coffee size={36} color="#8E2DE2" style={styles.icon} />
+        <Text style={styles.cardTitle}>{t.info.card1Title}</Text>
+        <Text style={styles.cardText}>{t.info.card1Text}</Text>
       </BlurView>
 
-      <BlurView intensity={20} tint="dark" style={styles.card}>
-        <Paintbrush size={32} color="#38bdf8" style={styles.icon} />
-        <Text style={styles.cardTitle}>Je passie delen</Text>
-        <Text style={styles.cardText}>
-          Heb je een vette skill of hobby? In de HK krijg je de ruimte om je talenten verder te ontwikkelen of anderen iets te leren.
-        </Text>
+      <BlurView intensity={30} tint="dark" style={styles.card}>
+        <Paintbrush size={36} color="#00C9FF" style={styles.icon} />
+        <Text style={styles.cardTitle}>{t.info.card2Title}</Text>
+        <Text style={styles.cardText}>{t.info.card2Text}</Text>
       </BlurView>
 
-      <BlurView intensity={20} tint="dark" style={styles.card}>
-        <MessagesSquare size={32} color="#34d399" style={styles.icon} />
-        <Text style={styles.cardTitle}>Echt praten</Text>
-        <Text style={styles.cardText}>
-          In de HK hoef je het niet alleen uit te vogelen. Hier voeren we de gesprekken die er echt toe doen—over wie je bent, je toekomst of je week.
-        </Text>
+      <BlurView intensity={30} tint="dark" style={styles.card}>
+        <MessagesSquare size={36} color="#FF0080" style={styles.icon} />
+        <Text style={styles.cardTitle}>{t.info.card3Title}</Text>
+        <Text style={styles.cardText}>{t.info.card3Text}</Text>
       </BlurView>
+
+      <View style={styles.imageGrid}>
+        <Image source={require('../images/huiskmaker-goed-gesprek.jpg')} style={styles.photo} />
+        <Image source={require('../images/huiskmaker-plannen-maken.jpg')} style={[styles.photo, { marginTop: 15 }]} />
+      </View>
 
       <LinearGradient
-        colors={['#38bdf8', '#818cf8']}
+        colors={['#8E2DE2', '#4A00E0']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.gradientCard}
       >
-        <Text style={styles.gradientTitle}>Ruimte voor jouw eigen ding</Text>
-        <Text style={styles.gradientText}>
-          De HK is van ons allemaal. We letten er samen op dat iedereen zich hier welkom voelt en dat niemand wordt buitengesloten. Zie de Huiskamer als een paraplu: daaronder is plek voor allerlei verschillende kleine groepjes en activiteiten.
-        </Text>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Kom een keer langs</Text>
-          <ArrowRight size={20} color="#fff" />
-        </TouchableOpacity>
+        <Text style={styles.gradientTitle}>{t.info.gradTitle}</Text>
+        <Text style={styles.gradientText}>{t.info.gradText}</Text>
       </LinearGradient>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    backgroundColor: 'rgba(0,0,0,0.2)', // Slight dark background overlay
-    paddingVertical: 40,
-  },
-  heading: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#fff',
-    textAlign: 'center',
-    marginBottom: 30,
-  },
-  highlight: {
-    color: '#38bdf8',
-  },
-  card: {
-    padding: 25,
-    borderRadius: 20,
-    marginBottom: 20,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.1)',
-    overflow: 'hidden',
-  },
-  icon: {
-    marginBottom: 15,
-  },
-  cardTitle: {
-    color: '#fff',
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  cardText: {
-    color: '#b3b3b3',
-    lineHeight: 24,
-    fontSize: 16,
-  },
-  gradientCard: {
-    padding: 30,
-    borderRadius: 20,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  gradientTitle: {
-    color: '#fff',
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-  gradientText: {
-    color: 'rgba(255,255,255,0.9)',
-    fontSize: 16,
-    lineHeight: 24,
-    marginBottom: 25,
-    textAlign: 'center',
-  },
-  button: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    paddingVertical: 12,
-    paddingHorizontal: 25,
-    borderRadius: 30,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.3)',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginRight: 10,
-  }
+  container: { padding: 20, paddingTop: 40 },
+  heading: { fontSize: 36, fontWeight: 'bold', color: '#fff', marginBottom: 40, textAlign: 'center' },
+  highlight: { color: '#00C9FF' },
+  card: { padding: 25, borderRadius: 25, marginBottom: 20, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(255,255,255,0.05)' },
+  icon: { marginBottom: 20 },
+  cardTitle: { color: '#fff', fontSize: 24, fontWeight: 'bold', marginBottom: 15 },
+  cardText: { color: '#b3b3b3', fontSize: 16, lineHeight: 26 },
+  imageGrid: { marginTop: 20, marginBottom: 40 },
+  photo: { width: '100%', aspectRatio: 4/3, borderRadius: 20 },
+  gradientCard: { padding: 30, borderRadius: 25, alignItems: 'center' },
+  gradientTitle: { color: '#fff', fontSize: 26, fontWeight: 'bold', marginBottom: 20, textAlign: 'center' },
+  gradientText: { color: 'rgba(255,255,255,0.9)', fontSize: 16, lineHeight: 26, textAlign: 'center' }
 });

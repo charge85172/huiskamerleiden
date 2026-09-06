@@ -1,143 +1,74 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { ArrowRight, Users, Sparkles } from 'lucide-react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Sparkles, ArrowRight } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
+import { useLanguage } from '../context/LanguageContext';
+import HuiskamerLogo from './HuiskamerLogo';
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <View style={styles.container}>
-      <BlurView intensity={20} tint="dark" style={styles.pill}>
-        <Sparkles size={16} color="#38bdf8" />
-        <Text style={styles.pillText}>Voor en door jongeren</Text>
+      <View style={styles.logoWrap}>
+        <HuiskamerLogo size={140} color="#fe010b" animated={true} />
+      </View>
+
+      <BlurView intensity={30} tint="dark" style={styles.pill}>
+        <Sparkles size={16} color="#00C9FF" />
+        <Text style={styles.pillText}>{t.hero.pill}</Text>
       </BlurView>
       
       <Text style={styles.title}>
-        Jouw plek om te <Text style={styles.highlightPink}>chillen</Text>, te <Text style={styles.highlightBlue}>groeien</Text> en jezelf te zijn.
+        {t.hero.titleStart}<Text style={styles.highlightPink}>{t.hero.titlePink}</Text>{t.hero.titleMid1}<Text style={styles.highlightCyan}>{t.hero.titleCyan}</Text>{t.hero.titleMid2}<Text style={styles.highlightPurple}>{t.hero.titlePurple}</Text>{t.hero.titleEnd}
       </Text>
       
-      <Text style={styles.subtitle}>
-        Zoek je een plek waar je gewoon binnen kunt lopen, zonder gedoe? Welkom bij de Huiskamer. Een spot voor en door jongeren tussen de 17 en 30+ jaar.
-      </Text>
+      <Text style={styles.subtitle}>{t.hero.subtitle}</Text>
       
-      <TouchableOpacity>
-        <LinearGradient
-          colors={['#38bdf8', '#818cf8']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={styles.primaryButton}
-        >
-          <Text style={styles.buttonTextPrimary}>Kom eens langs</Text>
-          <ArrowRight size={18} color="#fff" />
-        </LinearGradient>
-      </TouchableOpacity>
+      <View style={styles.buttonRow}>
+        <TouchableOpacity activeOpacity={0.8} style={styles.btnWrap}>
+          <LinearGradient colors={['#8E2DE2', '#4A00E0']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.primaryButton}>
+            <Text style={styles.buttonText}>{t.hero.btn1}</Text>
+            <ArrowRight color="#fff" size={20} />
+          </LinearGradient>
+        </TouchableOpacity>
+      </View>
 
-      <TouchableOpacity style={styles.secondaryButton}>
-        <Text style={styles.buttonTextSecondary}>Wat is de Huiskamer?</Text>
-        <Users size={18} color="#fff" />
-      </TouchableOpacity>
-      
-      <View style={styles.imageContainer}>
+      <BlurView intensity={30} tint="dark" style={styles.imageContainer}>
         <Image 
-          source={{ uri: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800' }} 
-          style={styles.image}
+          source={require('../images/huiskmaker-hartelijk-welkom.jpg')}
+          style={styles.heroImage}
           resizeMode="cover"
         />
         <LinearGradient
-          colors={['rgba(56, 189, 248, 0.3)', 'rgba(129, 140, 248, 0.3)']}
+          colors={['rgba(142, 45, 226, 0.4)', 'rgba(0, 201, 255, 0.4)']}
           style={StyleSheet.absoluteFillObject}
         />
-      </View>
+        <View style={styles.imageOverlayBadge}>
+          <Text style={styles.badgeText}>{t.hero.badge}</Text>
+        </View>
+      </BlurView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    paddingTop: 120, // push down for navbar
-    alignItems: 'center',
-  },
-  pill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 20,
-    marginBottom: 20,
-    borderColor: 'rgba(255,255,255,0.2)',
-    borderWidth: 1,
-    overflow: 'hidden',
-  },
-  pillText: {
-    color: '#fff',
-    marginLeft: 8,
-    fontWeight: '600',
-  },
-  title: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: '#fff',
-    textAlign: 'center',
-    marginBottom: 20,
-  },
-  highlightPink: {
-    color: '#818cf8',
-  },
-  highlightBlue: {
-    color: '#34d399',
-  },
-  subtitle: {
-    color: '#b3b3b3',
-    fontSize: 16,
-    textAlign: 'center',
-    marginBottom: 30,
-    lineHeight: 24,
-  },
-  primaryButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 30,
-    marginBottom: 15,
-    width: 250,
-  },
-  buttonTextPrimary: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginRight: 10,
-  },
-  secondaryButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 30,
-    backgroundColor: 'rgba(255,255,255,0.1)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.2)',
-    marginBottom: 40,
-    width: 250,
-  },
-  buttonTextSecondary: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginRight: 10,
-  },
-  imageContainer: {
-    width: '100%',
-    height: 300,
-    borderRadius: 20,
-    overflow: 'hidden',
-    position: 'relative',
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-  }
+  container: { padding: 20, paddingTop: 40, alignItems: 'center' },
+  logoWrap: { marginBottom: 30, alignItems: 'center' },
+  pill: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 10, borderRadius: 30, marginBottom: 30, overflow: 'hidden' },
+  pillText: { color: '#fff', marginLeft: 10, fontWeight: '600', fontSize: 16 },
+  title: { color: '#fff', fontSize: 42, fontWeight: 'bold', textAlign: 'center', marginBottom: 25, lineHeight: 52 },
+  highlightPink: { color: '#FF0080' },
+  highlightCyan: { color: '#00C9FF' },
+  highlightPurple: { color: '#8E2DE2' },
+  subtitle: { color: '#b3b3b3', fontSize: 18, textAlign: 'center', marginBottom: 40, lineHeight: 28, paddingHorizontal: 10 },
+  buttonRow: { flexDirection: 'row', gap: 15, marginBottom: 50, flexWrap: 'wrap', justifyContent: 'center' },
+  btnWrap: { marginBottom: 15 },
+  primaryButton: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 35, paddingVertical: 18, borderRadius: 35 },
+  buttonText: { color: '#fff', fontSize: 18, fontWeight: 'bold', marginRight: 10 },
+  imageContainer: { width: '100%', aspectRatio: 1, maxHeight: 600, borderRadius: 25, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
+  heroImage: { width: '100%', height: '100%', opacity: 0.8 },
+  imageOverlayBadge: { position: 'absolute', bottom: 30, alignSelf: 'center', backgroundColor: 'rgba(0,0,0,0.6)', paddingHorizontal: 25, paddingVertical: 15, borderRadius: 30 },
+  badgeText: { color: '#fff', fontSize: 18, fontWeight: 'bold' }
 });

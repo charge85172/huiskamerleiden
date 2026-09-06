@@ -2,96 +2,53 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Home, Lightbulb, MessageCircle } from 'lucide-react-native';
 import { BlurView } from 'expo-blur';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function About() {
+  const { t } = useLanguage();
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>
-        Waarom moet ik <Text style={styles.highlight}>eens langs?</Text>
+        {t.about.titleStart}<Text style={styles.highlight}>{t.about.titleHighlight}</Text>
       </Text>
-      <Text style={styles.subheading}>
-        Heb je een tof idee, mooie plannen of wil je gewoon even bijpraten? Kom eens langs bij de Leidse Huiskamer.
-      </Text>
+      
+      <Text style={styles.subheading}>{t.about.subtitle}</Text>
 
-      <BlurView intensity={20} tint="dark" style={styles.card}>
-        <View style={[styles.iconBox, { backgroundColor: '#818cf8' }]}>
-          <Home size={24} color="#fff" />
+      <BlurView intensity={30} tint="dark" style={styles.card}>
+        <View style={[styles.iconBox, { backgroundColor: '#8E2DE2' }]}>
+          <Home size={28} color="#fff" />
         </View>
-        <Text style={styles.cardTitle}>Ontmoetingsplek</Text>
-        <Text style={styles.cardText}>
-          Een huiskamer als ontmoetingsplek voor jongvolwassenen waar ze hun eigen community kunnen bouwen.
-        </Text>
+        <Text style={styles.cardTitle}>{t.about.card1Title}</Text>
+        <Text style={styles.cardText}>{t.about.card1Text}</Text>
       </BlurView>
 
-      <BlurView intensity={20} tint="dark" style={styles.card}>
-        <View style={[styles.iconBox, { backgroundColor: '#38bdf8' }]}>
-          <Lightbulb size={24} color="#fff" />
+      <BlurView intensity={30} tint="dark" style={styles.card}>
+        <View style={[styles.iconBox, { backgroundColor: '#00C9FF' }]}>
+          <Lightbulb size={28} color="#fff" />
         </View>
-        <Text style={styles.cardTitle}>Passie Delen</Text>
-        <Text style={styles.cardText}>
-          Een plek waar jongeren hun passie kunnen delen en beoefenen, talenten inzetten en skills ontwikkelen.
-        </Text>
+        <Text style={styles.cardTitle}>{t.about.card2Title}</Text>
+        <Text style={styles.cardText}>{t.about.card2Text}</Text>
       </BlurView>
 
-      <BlurView intensity={20} tint="dark" style={styles.card}>
-        <View style={[styles.iconBox, { backgroundColor: '#34d399' }]}>
-          <MessageCircle size={24} color="#fff" />
+      <BlurView intensity={30} tint="dark" style={styles.card}>
+        <View style={[styles.iconBox, { backgroundColor: '#FF0080' }]}>
+          <MessageCircle size={28} color="#fff" />
         </View>
-        <Text style={styles.cardTitle}>Continuïteit</Text>
-        <Text style={styles.cardText}>
-          De HK is bedoeld als plek om continuïteit te bieden aan jongvolwassenen. Een community voor en door jongeren.
-        </Text>
+        <Text style={styles.cardTitle}>{t.about.card3Title}</Text>
+        <Text style={styles.cardText}>{t.about.card3Text}</Text>
       </BlurView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    paddingVertical: 40,
-  },
-  heading: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#fff',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  highlight: {
-    color: '#38bdf8',
-  },
-  subheading: {
-    color: '#b3b3b3',
-    fontSize: 16,
-    textAlign: 'center',
-    marginBottom: 40,
-    lineHeight: 24,
-  },
-  card: {
-    padding: 25,
-    borderRadius: 20,
-    marginBottom: 20,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.1)',
-    overflow: 'hidden',
-  },
-  iconBox: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 15,
-  },
-  cardTitle: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  cardText: {
-    color: '#b3b3b3',
-    lineHeight: 22,
-  }
+  container: { padding: 20, paddingTop: 40 },
+  heading: { fontSize: 36, fontWeight: 'bold', color: '#fff', marginBottom: 15, textAlign: 'center' },
+  highlight: { color: '#FF0080' },
+  subheading: { color: '#b3b3b3', fontSize: 18, lineHeight: 28, marginBottom: 40, textAlign: 'center', paddingHorizontal: 10 },
+  card: { padding: 25, borderRadius: 25, marginBottom: 20, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
+  iconBox: { width: 60, height: 60, borderRadius: 30, justifyContent: 'center', alignItems: 'center', marginBottom: 20 },
+  cardTitle: { color: '#fff', fontSize: 22, fontWeight: 'bold', marginBottom: 10 },
+  cardText: { color: '#b3b3b3', fontSize: 16, lineHeight: 24 }
 });

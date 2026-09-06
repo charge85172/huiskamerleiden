@@ -1,17 +1,28 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Home } from 'lucide-react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { BlurView } from 'expo-blur';
+import { useLanguage } from '../context/LanguageContext';
+import HuiskamerLogo from './HuiskamerLogo';
 
 export default function Navbar() {
+  const { toggleLanguage, t } = useLanguage();
+
   return (
     <View style={styles.container}>
-      <BlurView intensity={20} tint="dark" style={styles.blurContainer}>
-        <View style={styles.logoContainer}>
-          <Home size={24} color="#38bdf8" />
-          <Text style={styles.logoText}>
-            De Leidse <Text style={styles.highlight}>Huiskamer</Text>
-          </Text>
+      <BlurView intensity={30} tint="dark" style={styles.blurContainer}>
+        <View style={styles.row}>
+          <View style={styles.logoContainer}>
+            <View style={{ marginRight: 10 }}>
+              <HuiskamerLogo size={26} color="#fff" animated={false} />
+            </View>
+            <Text style={styles.logoText}>
+              {t.ui.logoFirst}<Text style={styles.highlight}>{t.ui.logoHighlight}</Text>
+            </Text>
+          </View>
+          
+          <TouchableOpacity onPress={toggleLanguage} style={styles.langButton}>
+            <Text style={styles.langText}>{t.ui.langBtn}</Text>
+          </TouchableOpacity>
         </View>
       </BlurView>
     </View>
@@ -19,33 +30,12 @@ export default function Navbar() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    top: 0,
-    width: '100%',
-    zIndex: 100,
-  },
-  blurContainer: {
-    padding: 15,
-    paddingTop: 50, // Space for status bar on mobile
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(255,255,255,0.1)',
-  },
-  logoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-  },
-  logoText: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginLeft: 8,
-  },
-  highlight: {
-    color: '#38bdf8',
-  }
+  container: { paddingHorizontal: 20, marginBottom: 20, zIndex: 100 },
+  blurContainer: { borderRadius: 20, overflow: 'hidden', padding: 15 },
+  row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  logoContainer: { flexDirection: 'row', alignItems: 'center' },
+  logoText: { color: '#fff', fontSize: 20, fontWeight: 'bold' },
+  highlight: { color: '#00C9FF' },
+  langButton: { backgroundColor: 'rgba(255,255,255,0.1)', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 12 },
+  langText: { color: '#fff', fontWeight: 'bold', fontSize: 14 }
 });

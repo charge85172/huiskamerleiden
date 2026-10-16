@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Animated } from 'react-native';
 import Svg, { Path, Circle } from 'react-native-svg';
 
-export default function HuiskamerLogo({ size = 200, color = "#fe010b", animated = false }) {
+export default function HuiskamerLogo({ size = 200, color = "#fe010b", animated = false, onAnimationComplete }) {
   const progressAnim = useRef(new Animated.Value(animated ? 15000 : 0)).current;
   const opacityAnim = useRef(new Animated.Value(animated ? 0 : 1)).current;
   
@@ -25,7 +25,11 @@ export default function HuiskamerLogo({ size = 200, color = "#fe010b", animated 
           duration: 1000,
           useNativeDriver: false,
         })
-      ]).start();
+      ]).start(({ finished }) => {
+        if (finished && onAnimationComplete) {
+          onAnimationComplete();
+        }
+      });
 
       return () => {
         progressAnim.removeListener(progSub);

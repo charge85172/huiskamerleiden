@@ -5,6 +5,17 @@ export const HuiskamerText = {
       logoFirst: "De Leidse ",
       logoHighlight: "Huiskamer",
     },
+    intro: {
+      welcomeText: "Welkom op de website van Stichting Huiskamer Leiden! Ben jij geïnteresseerd om een keer langs te komen? Of wil je graag samenwerken met ons? Maak hieronder je keuze:",
+      youthBtn: "Ga door naar Jongerenversie",
+      businessBtn: "Ga door naar Bedrijfsversie",
+    },
+    navbar: {
+      switchToBusiness: "Ga naar bedrijfsversie",
+      switchToYouth: "Ga naar jongerenversie",
+    },
+    
+    // JONGEREN VERSIE (YOUTH) - Default
     hero: {
       pill: "Voor en door jongeren",
       titleStart: "Jouw plek om te ",
@@ -14,7 +25,7 @@ export const HuiskamerText = {
       titleMid2: " en ",
       titlePurple: "jezelf te zijn",
       titleEnd: ".",
-      subtitle: "Zoek je een plek waar je gewoon binnen kunt lopen, zonder gedoe? Welkom bij de Huiskamer (HK). Een spot voor en door jongeren tussen de 17 en 30+ jaar.",
+      subtitle: "Zoek je een plek waar je gewoon binnen kunt lopen, zonder gedoe? Welkom bij de Huiskamer. Een spot voor en door jongeren tussen de 17 en 30+ jaar.",
       btn1: "Kom eens langs",
       badge: "Jouw Community"
     },
@@ -44,14 +55,14 @@ export const HuiskamerText = {
       grid2: "Community",
       grid3: "Netwerk",
       grid4: "Centrale Plek",
-      text: "Het doel van de Huiskamer is om een ontmoetingsplek te zijn voor jongvolwassenen. Daarnaast is het ook een plek waar jongeren hun passie kunnen delen en beoefenen. Waarbij ze talenten, ervaringen en skills meebrengen en die binnen de Huiskamer kunnen ontwikkelen en inzetten."
+      text: "Het doel van de Huiskamer is om een ontmoetingsplek te zijn voor jongvolwassen. Daarnaast is het ook een plek waar jongeren hun passie kunnen delen en beoefenen. Waarbij ze talenten, ervaringen en skills meebrengen en die binnen de Huiskamer kunnen ontwikkelen en inzetten."
     },
     thirdPlace: {
       titleStart: "Wat betekent een ",
       titleHighlight: "Derde Plek?",
-      text: "In de sociologie verwijst de 'derde plek' naar een vertrouwde, publieke omgeving naast het huis ('eerste plek') en het werk of de studie ('tweede plek'). Het is een plek waar je tot rust komt, anderen ontmoet en je onderdeel voelt van een gemeenschap.",
-      gradTitle: "Geen verplichtingen",
-      gradText: "De Huiskamer is precies dat. Een plek waar niks moet, waar je zonder afspraak binnenloopt, en waar gelijkwaardigheid en gezelligheid vooropstaan."
+      text: "Een plek om samen te komen noemt men ook wel een ‘third place’: een plek buiten school, werk of gezin waar jongvolwassen in een huiselijke setting elkaar kunnen ontmoeten. Ze voelen zich regelmatig eenzaam en zitten vaak in hun eigen (online)bubbel. De HK wil hier iets aan doen.",
+      gradTitle: "Samen eenzaamheid tegengaan",
+      gradText: "Dit kan door samen te eten of op een andere manier in sociaal contact komen. De huiskamer wil samen met de stad de eenzaamheid van jongvolwassenen tegengaan."
     },
     info: {
       titleStart: "Wat kun je ",
@@ -61,10 +72,75 @@ export const HuiskamerText = {
       card2Title: "Je passie delen",
       card2Text: "Heb je een vette skill of hobby? In de HK krijg je de ruimte om je talenten verder te ontwikkelen of anderen iets te leren.",
       card3Title: "Echt praten",
-      card3Text: "We weten dat de druk (hallo social media!) hoog kan zijn. In de HK hoef je het niet alleen uit te vogelen. Hier voeren we de gesprekken die er echt toe doen—over wie je bent, je toekomst of gewoon hoe je week was.",
+      card3Text: "We weten dat de druk hoog kan zijn. In de HK hoef je het niet alleen uit te vogelen. Hier voeren we de gesprekken die er echt toe doen.",
       gradTitle: "Ruimte voor jouw eigen ding",
-      gradText: "De HK is van ons allemaal. We letten er samen op dat iedereen zich hier welkom voelt en dat niemand wordt buitengesloten. Zie de Huiskamer als een paraplu: daaronder is plek voor allerlei verschillende kleine groepjes en activiteiten. Zo creëren we de ruimte die jij nodig hebt om je op je gemak te voelen, wat je ook komt doen."
+      gradText: "De HK is van ons allemaal. We letten er samen op dat iedereen zich hier welkom voelt en dat niemand wordt buitengesloten. Zie de Huiskamer als een paraplu: daaronder is plek voor allerlei verschillende kleine groepjes en activiteiten."
     },
+    
+    // BEDRIJVEN VERSIE (BUSINESS)
+    business: {
+      hero: {
+        pill: "Voor partners & organisaties",
+        titleStart: "Samen bouwen we aan de ",
+        titlePink: "toekomst",
+        titleMid1: " van de ",
+        titleCyan: "Leidse",
+        titleMid2: " ",
+        titlePurple: "jongeren",
+        titleEnd: ".",
+        subtitle: "De Leidse Huiskamer is de centrale plek waar jongeren en organisaties samenkomen om eenzaamheid tegen te gaan en talentontwikkeling te stimuleren.",
+        btn1: "Neem contact op",
+        badge: "Jouw Partner"
+      },
+      about: {
+        titleStart: "Waarom ",
+        titleHighlight: "samenwerken?",
+        subtitle: "Door de krachten te bundelen van alle organisaties in Leiden die aanbod hebben voor jongeren, willen we hét verbindingspunt zijn in de stad.",
+        card1Title: "Verbindingspunt",
+        card1Text: "Een centrale plek in de stad waar jongeren en organisaties elkaar veel makkelijker kunnen vinden en bereiken.",
+        card2Title: "Gedeeld Aanbod",
+        card2Text: "Voorkom versnippering van het aanbod. Wij bieden het netwerk en het platform om jouw initiatieven onder de aandacht te brengen.",
+        card3Title: "Maatschappelijke Impact",
+        card3Text: "Samen pakken we eenzaamheid aan en verbeteren we de (mentale) gezondheid van studenten en jongvolwassenen."
+      },
+      activities: {
+        titleStart: "Onze ",
+        titleHighlight: "Initiatieven",
+        eetkamerTitle: "De Eetkamer (Samen Eten)",
+        eetkamerSubtitle: "Verbindende wekelijkse maaltijden",
+        crafthubTitle: "De Crafthub (Creativiteit)",
+        crafthubSubtitle: "Gezamenlijke creatieve workshops"
+      },
+      goals: {
+        titleStart: "Een vraag aan de ",
+        titleHighlight: "stad",
+        grid1: "Samenwerking",
+        grid2: "Netwerk",
+        grid3: "Impact",
+        grid4: "Zichtbaarheid",
+        text: "De Huiskamer heeft een tweeledig doel: enerzijds het vormen van een community voor jongeren, en anderzijds het vormen van een netwerk voor en door organisaties. Zodat de jongeren en de organisaties elkaar feilloos kunnen vinden."
+      },
+      thirdPlace: {
+        titleStart: "Voor en door onze ",
+        titleHighlight: "stad",
+        text: "Graag werken wij als de Huiskamer samen met allerlei verschillende organisaties in de stad. Dus ben jij als opleiding, stichting of organisatie geïnteresseerd in ons initiatief, laat het ons vooral weten.",
+        gradTitle: "Samen opzetten",
+        gradText: "Wij willen de HK samen met jullie gaan opzetten en jongvolwassen en studenten een mogelijkheid bieden om met elkaar een community op te zetten in de stad."
+      },
+      info: {
+        titleStart: "Wat bieden ",
+        titleHighlight: "wij?",
+        card1Title: "Fysieke Ruimte",
+        card1Text: "Wij bieden een fysieke, huiselijke locatie (De Third Place) waar jouw doelgroep zich op hun gemak voelt.",
+        card2Title: "Een Sterk Netwerk",
+        card2Text: "Toegang tot een brede groep jongvolwassenen (17-30+ jaar) uit alle achtergronden en levensstijlen in Leiden.",
+        card3Title: "Ondersteuning",
+        card3Text: "Een plek voor jonge makers, waarbij we samen de ruimte en het platform bieden om aan de slag te gaan met hun eigen ideeën.",
+        gradTitle: "Eenzaamheid Tegengaan",
+        gradText: "Het doel van de Huiskamer is om eenzaamheid tegen te gaan en (mentale) gezondheid te verbeteren. Obstakels wegnemen en hen de ruimte geven om zich te ontwikkelen. En dat op één plek."
+      },
+    },
+
     footer: {
       text: "De Huiskamer is die huiselijke plek waar niks moet en (bijna) alles mag. Geen ongemakkelijke stiltes, maar samen optrekken en doen waar jij energie van krijgt.",
       building: "Het Leidse Volkshuis",
@@ -94,12 +170,24 @@ export const HuiskamerText = {
       description: "Elke vrijdag toveren we het Volkshuis om tot De Crafthub! Onder leiding van Anne van Lier gaat de groep aan de slag met allerlei leuke knutsel- en creatieve projecten. Of je nu veel ervaring hebt of gewoon zin hebt om lekker met je handen bezig te zijn, iedereen kan aansluiten. Het is de perfecte manier om creatief te ontspannen en samen mooie dingen te maken!"
     }
   },
+  
   en: {
     ui: {
       langBtn: "NL",
       logoFirst: "The Leiden ",
       logoHighlight: "Living Room",
     },
+    intro: {
+      welcomeText: "Welcome to the website of the Leiden Living Room Foundation! Are you interested in visiting us? Or would you like to collaborate with us? Make your choice below:",
+      youthBtn: "Continue to Youth Version",
+      businessBtn: "Continue to Business Version",
+    },
+    navbar: {
+      switchToBusiness: "Switch to business version",
+      switchToYouth: "Switch to youth version",
+    },
+    
+    // YOUTH VERSION
     hero: {
       pill: "For and by young adults",
       titleStart: "Your place to ",
@@ -145,8 +233,8 @@ export const HuiskamerText = {
       titleStart: "What is a ",
       titleHighlight: "Third Place?",
       text: "In sociology, the 'third place' refers to a familiar, public environment alongside the home ('first place') and work or study ('second place'). It is a place where you can relax, meet others, and feel part of a community.",
-      gradTitle: "No obligations",
-      gradText: "The Living Room is exactly that. A place where nothing is mandatory, where you walk in without an appointment, and where equality and coziness come first."
+      gradTitle: "Tackling loneliness together",
+      gradText: "This can be done by eating together or connecting in other social ways. The living room wants to tackle the loneliness of young adults together with the city."
     },
     info: {
       titleStart: "What can you ",
@@ -156,10 +244,75 @@ export const HuiskamerText = {
       card2Title: "Share your passion",
       card2Text: "Do you have a cool skill or hobby? In the HK you get the space to further develop your talents or teach others something.",
       card3Title: "Real talk",
-      card3Text: "We know the pressure (hello social media!) can be high. In the HK you don't have to figure it out alone. Here we have the conversations that really matter—about who you are, your future, or just how your week was.",
+      card3Text: "We know the pressure can be high. In the HK you don't have to figure it out alone. Here we have the conversations that really matter.",
       gradTitle: "Space for your own thing",
-      gradText: "The HK belongs to all of us. Together we make sure that everyone feels welcome here and that no one is excluded. See the Living Room as an umbrella: underneath is room for all kinds of different small groups and activities. This is how we create the space you need to feel comfortable, no matter what you come to do."
+      gradText: "The HK belongs to all of us. Together we make sure that everyone feels welcome here and that no one is excluded. See the Living Room as an umbrella: underneath is room for all kinds of small groups and activities."
     },
+
+    // BUSINESS VERSION
+    business: {
+      hero: {
+        pill: "For partners & organizations",
+        titleStart: "Building the ",
+        titlePink: "future",
+        titleMid1: " of ",
+        titleCyan: "Leiden's",
+        titleMid2: " ",
+        titlePurple: "youth",
+        titleEnd: " together.",
+        subtitle: "The Leiden Living Room is the central place where young people and organizations come together to combat loneliness and stimulate talent development.",
+        btn1: "Contact us",
+        badge: "Your Partner"
+      },
+      about: {
+        titleStart: "Why ",
+        titleHighlight: "collaborate?",
+        subtitle: "By combining the strengths of all organizations in Leiden that offer services for youth, we want to be the connection point in the city.",
+        card1Title: "Connection Point",
+        card1Text: "A central place in the city where young people and organizations can find and reach each other much more easily.",
+        card2Title: "Shared Offerings",
+        card2Text: "Prevent fragmentation of offerings. We provide the network and platform to bring your initiatives to attention.",
+        card3Title: "Social Impact",
+        card3Text: "Together we tackle loneliness and improve the (mental) health of students and young adults."
+      },
+      activities: {
+        titleStart: "Our ",
+        titleHighlight: "Initiatives",
+        eetkamerTitle: "The Dining Room",
+        eetkamerSubtitle: "Connecting weekly meals",
+        crafthubTitle: "The Crafthub",
+        crafthubSubtitle: "Collaborative creative workshops"
+      },
+      goals: {
+        titleStart: "A question to the ",
+        titleHighlight: "city",
+        grid1: "Collaboration",
+        grid2: "Network",
+        grid3: "Impact",
+        grid4: "Visibility",
+        text: "The Living Room has a dual goal: on the one hand, forming a community for young people, and on the other hand, forming a network for and by organizations. So that young people and organizations can easily find each other."
+      },
+      thirdPlace: {
+        titleStart: "For and by our ",
+        titleHighlight: "city",
+        text: "As the Living Room, we like to work together with all kinds of different organizations in the city. So if you as an educational institution, foundation or organization are interested in our initiative, please let us know.",
+        gradTitle: "Setting up together",
+        gradText: "We want to set up the HK together with you and offer young adults and students an opportunity to build a community together in the city."
+      },
+      info: {
+        titleStart: "What do we ",
+        titleHighlight: "offer?",
+        card1Title: "Physical Space",
+        card1Text: "We offer a physical, homely location (The Third Place) where your target audience feels comfortable.",
+        card2Title: "A Strong Network",
+        card2Text: "Access to a broad group of young adults (17-30+ years) from all backgrounds and lifestyles in Leiden.",
+        card3Title: "Support",
+        card3Text: "A place for young creators, where together we provide the space and platform to get started with their own ideas.",
+        gradTitle: "Combating Loneliness",
+        gradText: "The goal of the Living Room is to combat loneliness and improve (mental) health. Removing obstacles and giving them the space to develop. All in one place."
+      },
+    },
+
     footer: {
       text: "The living room is that cozy place where nothing is mandatory and (almost) everything is allowed. No awkward silences, but pulling together and doing what gives you energy.",
       building: "Het Leidse Volkshuis",

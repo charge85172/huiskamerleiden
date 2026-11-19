@@ -46,7 +46,11 @@ export const HuiskamerText = {
       eetkamerTitle: "De Eetkamer",
       eetkamerSubtitle: "Eens in de 2 weken op woensdag",
       crafthubTitle: "De Crafthub",
-      crafthubSubtitle: "Elke vrijdag creatief bezig zijn"
+      crafthubSubtitle: "Elke vrijdag creatief bezig zijn",
+      queerHuiskamerTitle: "De Queer Huiskamer",
+      queerHuiskamerSubtitle: "Elke donderdag van 19:30 tot 21:00+",
+      transjongerenTitle: "Inloop Transjongeren",
+      transjongerenSubtitle: "Elke donderdag vanaf 18:30 uur"
     },
     goals: {
       titleStart: "Het doel van de ",
@@ -109,7 +113,11 @@ export const HuiskamerText = {
         eetkamerTitle: "De Eetkamer (Samen Eten)",
         eetkamerSubtitle: "Verbindende wekelijkse maaltijden",
         crafthubTitle: "De Crafthub (Creativiteit)",
-        crafthubSubtitle: "Gezamenlijke creatieve workshops"
+        crafthubSubtitle: "Gezamenlijke creatieve workshops",
+        queerHuiskamerTitle: "De Queer Huiskamer (Inclusieve Community)",
+        queerHuiskamerSubtitle: "Wekelijkse ontmoetingen voor LHBTQIA+ jongeren (donderdag)",
+        transjongerenTitle: "Inloop Transjongeren (Safe Space)",
+        transjongerenSubtitle: "Wekelijkse inloop voor transgender jongeren (donderdag)"
       },
       goals: {
         titleStart: "Een vraag aan de ",
@@ -139,6 +147,49 @@ export const HuiskamerText = {
         gradTitle: "Eenzaamheid Tegengaan",
         gradText: "Het doel van de Huiskamer is om eenzaamheid tegen te gaan en (mentale) gezondheid te verbeteren. Obstakels wegnemen en hen de ruimte geven om zich te ontwikkelen. En dat op één plek."
       },
+      eetkamerScreen: {
+        header: "De Eetkamer",
+        cardTitle: "Wanneer eten we samen?",
+        cardSub: "Om de week op woensdagavond",
+        locTitle: "Locatie",
+        locText: "Het Leidse Volkshuis",
+        whoTitle: "Doelgroep & Partners",
+        whoText: "Jongeren van 16 tot 30 jaar, maatschappelijke partners en vrijwilligers",
+        description: "De Eetkamer is hét laagdrempelige ontmoetingspunt waar jongeren en stadsgenoten samenkomen rondom gezonde, gezamenlijke maaltijden. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dit initiatief verbindt diverse doelgroepen en bestrijdt eenzaamheid in de praktijk."
+      },
+      crafthubScreen: {
+        header: "De Crafthub",
+        cardTitle: "Wanneer zijn we creatief?",
+        cardSub: "Elke vrijdag",
+        cardSubExtra: "Creatieve werkplaats & ontmoeting",
+        locTitle: "Locatie",
+        locText: "Het Leidse Volkshuis",
+        whoTitle: "Begeleiding",
+        whoText: "Onder leiding van Anne van Lier & creatieve coaches",
+        description: "De Crafthub biedt jongeren een inspirerende werkplaats om creatieve vaardigheden te ontwikkelen en talenten te ontdekken. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Samenwerkingen met bedrijven en culturele instellingen maken nieuwe materialen en technieken toegankelijk voor iedereen."
+      },
+      queerHuiskamerScreen: {
+        header: "De Queer Huiskamer",
+        cardTitle: "Over dit initiatief",
+        cardSub: "Elke donderdag van 19:30 tot 21:00",
+        cardSubExtra: "Vaste wekelijkse ontmoetingsavond",
+        locTitle: "Locatie",
+        locText: "Het Leidse Volkshuis",
+        whoTitle: "Doelgroep & Partners",
+        whoText: "LHBTQIA+ jongvolwassenen, partners en maatschappelijke organisaties",
+        description: "Met De Queer Huiskamer bieden wij een structurele safe space voor inclusie, sociale binding en mentale gezondheid van jonge LHBTQIA+ inwoners in Leiden. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. In samenwerking met maatschappelijke instellingen stimuleren we weerbaarheid, ontmoeting en dialoog."
+      },
+      transjongerenScreen: {
+        header: "Inloop Transjongeren",
+        cardTitle: "Over dit initiatief",
+        cardSub: "Elke donderdag om 18:30",
+        cardSubExtra: "Wekelijkse inloop met aansluitend De Queer Huiskamer",
+        locTitle: "Locatie",
+        locText: "Het Leidse Volkshuis",
+        whoTitle: "Doelgroep & Begeleiding",
+        whoText: "Transgender en non-binaire jongeren (16-30 jaar) & professionele begeleiding",
+        description: "De Inloop Transjongeren voorziet in een grote behoefte aan laagdrempelige, veilige peer-support voor transgender en genderqueer jongvolwassenen. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. We werken nauw samen met zorgverleners en belangenorganisaties om tijdig steun en aansluiting te bieden."
+      },
     },
 
     footer: {
@@ -147,6 +198,36 @@ export const HuiskamerText = {
       address1: "Apothekersdijk 33",
       address2: "2312 DD Leiden",
       copyright: "© 2026 De Leidse Huiskamer"
+    },
+    communityNotice: {
+      badge: "WhatsApp Community",
+      title: "Laat weten dat je komt!",
+      text: "Ondanks dat de inloop bij al onze activiteiten altijd helemaal vrij is, vinden we het ontzettend fijn als je in de WhatsApp community aangeeft dat je plant te komen. Zo kunnen we rekening houden met hoeveel we koken (zoals bij de Eetkamer), hoeveel ruimte er is, en is het voor andere bezoekers fijn om te weten hoe gezellig druk het wordt.",
+      prompt: "Laat het weten in de WhatsApp community! Zit je daar nog niet bij?",
+      link: "Meld je hier aan!"
+    },
+    communityForm: {
+      header: "Meld je aan voor WhatsApp",
+      title: "Kom bij onze WhatsApp Community",
+      subtitle: "Blijf op de hoogte van onze activiteiten, laat weten wanneer je aanschuift en ontmoet andere jongeren in Leiden.",
+      nameLabel: "Naamvoorkeur *",
+      namePlaceholder: "Hoe mogen we je noemen?",
+      ageLabel: "Leeftijd *",
+      agePlaceholder: "Bijv. 21",
+      phoneLabel: "WhatsApp Telefoonnummer *",
+      phonePlaceholder: "06 12345678",
+      emailLabel: "E-mailadres (optioneel)",
+      emailPlaceholder: "jouw@email.nl",
+      sourceLabel: "Hoe ben je op de Huiskamer terecht gekomen? *",
+      sourcePlaceholder: "Bijv. via vrienden, school, Instagram, langsgelopen...",
+      requiredError: "Vul alsjeblieft alle verplichte velden (*) in.",
+      submitBtn: "Aanmelden voor WhatsApp",
+      safetyNote: "Wij behandelen je gegevens strikt vertrouwelijk en gebruiken deze uitsluitend om je veilig toe te voegen aan onze community.",
+      successTitle: "Aanmelding ontvangen!",
+      successMessage: "Iemand van ons team gaat zo snel mogelijk kijken om je in de community toe te voegen. Deze persoonlijke aanpak zorgt ervoor dat onze community en activiteiten veilig en vertrouwd blijven, omdat wij dat ontzettend belangrijk vinden.",
+      successCountdown: "Je wordt automatisch teruggestuurd over",
+      seconds: "seconden...",
+      backBtn: "Direct terug naar overzicht"
     },
     eetkamerScreen: {
       header: "De Eetkamer",
@@ -168,6 +249,28 @@ export const HuiskamerText = {
       whoTitle: "Host",
       whoText: "Anne van Lier",
       description: "Elke vrijdag toveren we het Volkshuis om tot De Crafthub! Onder leiding van Anne van Lier gaat de groep aan de slag met allerlei leuke knutsel- en creatieve projecten. Of je nu veel ervaring hebt of gewoon zin hebt om lekker met je handen bezig te zijn, iedereen kan aansluiten. Het is de perfecte manier om creatief te ontspannen en samen mooie dingen te maken!"
+    },
+    queerHuiskamerScreen: {
+      header: "De Queer Huiskamer",
+      cardTitle: "Wanneer ontmoeten we elkaar?",
+      cardSub: "Elke donderdag van 19:30 tot 21:00",
+      cardSubExtra: "Vrije inloop (gaat vaak wat langer door!)",
+      locTitle: "Locatie",
+      locText: "Het Leidse Volkshuis",
+      whoTitle: "Voor wie?",
+      whoText: "LHBTQIA+ jongeren & allies (16 t/m 30 jaar)",
+      description: "De Queer Huiskamer is een warme, veilige en gezellige plek speciaal voor LHBTQIA+ jongeren en allies in Leiden. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Of je nu langs wilt komen voor een fijn gesprek, om nieuwe vrienden te maken, spelletjes te spelen of gewoon lekker te ontspannen: iedereen is van harte welkom in het Volkshuis."
+    },
+    transjongerenScreen: {
+      header: "Inloop Transjongeren",
+      cardTitle: "Wanneer is de inloop?",
+      cardSub: "Elke donderdag om 18:30",
+      cardSubExtra: "Vrije inloop, loopt daarna door tot De Queer Huiskamer",
+      locTitle: "Locatie",
+      locText: "Het Leidse Volkshuis",
+      whoTitle: "Voor wie?",
+      whoText: "Transgender, non-binaire en zoekende jongeren",
+      description: "De Inloop Transjongeren is een vertrouwde plek om andere jongeren te ontmoeten die in een vergelijkbaar proces zitten of hebben gezeten. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Kom gerust binnenwandelen voor een kop thee, een goed gesprek of gewoon om in een veilige omgeving jezelf te zijn."
     }
   },
   
@@ -218,7 +321,11 @@ export const HuiskamerText = {
       eetkamerTitle: "The Dining Room",
       eetkamerSubtitle: "Every other Wednesday",
       crafthubTitle: "The Crafthub",
-      crafthubSubtitle: "Get creative every Friday"
+      crafthubSubtitle: "Get creative every Friday",
+      queerHuiskamerTitle: "The Queer Living Room",
+      queerHuiskamerSubtitle: "Every Thursday from 19:30 to 21:00+",
+      transjongerenTitle: "Trans Youth Walk-in",
+      transjongerenSubtitle: "Every Thursday from 18:30 onwards"
     },
     goals: {
       titleStart: "The goal of the ",
@@ -281,7 +388,11 @@ export const HuiskamerText = {
         eetkamerTitle: "The Dining Room",
         eetkamerSubtitle: "Connecting weekly meals",
         crafthubTitle: "The Crafthub",
-        crafthubSubtitle: "Collaborative creative workshops"
+        crafthubSubtitle: "Collaborative creative workshops",
+        queerHuiskamerTitle: "The Queer Living Room",
+        queerHuiskamerSubtitle: "Weekly gatherings for LGBTQIA+ youth (Thursday)",
+        transjongerenTitle: "Trans Youth Walk-in",
+        transjongerenSubtitle: "Weekly walk-in for transgender youth (Thursday)"
       },
       goals: {
         titleStart: "A question to the ",
@@ -311,6 +422,49 @@ export const HuiskamerText = {
         gradTitle: "Combating Loneliness",
         gradText: "The goal of the Living Room is to combat loneliness and improve (mental) health. Removing obstacles and giving them the space to develop. All in one place."
       },
+      eetkamerScreen: {
+        header: "The Dining Room",
+        cardTitle: "When do we eat together?",
+        cardSub: "Every other Wednesday evening",
+        locTitle: "Location",
+        locText: "Het Leidse Volkshuis",
+        whoTitle: "Target Audience & Partners",
+        whoText: "Youth from 16 to 30 years old, community partners, and volunteers",
+        description: "The Dining Room is our low-threshold community meal initiative where youth and local citizens connect around healthy food. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. This initiative combats loneliness through shared dining."
+      },
+      crafthubScreen: {
+        header: "The Crafthub",
+        cardTitle: "When are we creative?",
+        cardSub: "Every Friday",
+        cardSubExtra: "Creative workshop & community space",
+        locTitle: "Location",
+        locText: "Het Leidse Volkshuis",
+        whoTitle: "Guidance",
+        whoText: "Guided by Anne van Lier & creative coaches",
+        description: "The Crafthub provides young adults with an inspiring workshop to develop creative skills and discover their passions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Collaborations with organizations and creative sectors make new techniques and tools accessible to all."
+      },
+      queerHuiskamerScreen: {
+        header: "The Queer Living Room",
+        cardTitle: "About this initiative",
+        cardSub: "Every Thursday from 19:30 to 21:00",
+        cardSubExtra: "Fixed weekly evening session",
+        locTitle: "Location",
+        locText: "Het Leidse Volkshuis",
+        whoTitle: "Target Audience & Partners",
+        whoText: "LGBTQIA+ youth, community partners, and organizations",
+        description: "Through The Queer Living Room we provide a structural safe space for inclusion, social connection, and mental well-being of young LGBTQIA+ residents in Leiden. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. In collaboration with societal organizations, we stimulate resilience, community, and dialogue."
+      },
+      transjongerenScreen: {
+        header: "Trans Youth Walk-in",
+        cardTitle: "About this initiative",
+        cardSub: "Every Thursday at 18:30",
+        cardSubExtra: "Weekly walk-in followed by The Queer Living Room",
+        locTitle: "Location",
+        locText: "Het Leidse Volkshuis",
+        whoTitle: "Target Audience & Support",
+        whoText: "Transgender and non-binary youth (16-30 years) & guided support",
+        description: "The Trans Youth Walk-in fulfills an essential need for low-threshold, safe peer support for transgender and genderqueer young adults. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis ipsum. Praesent mauris. We work closely with healthcare and youth welfare partners to provide timely connection and empowerment."
+      },
     },
 
     footer: {
@@ -319,6 +473,36 @@ export const HuiskamerText = {
       address1: "Apothekersdijk 33",
       address2: "2312 DD Leiden",
       copyright: "© 2026 The Leiden Living Room"
+    },
+    communityNotice: {
+      badge: "WhatsApp Community",
+      title: "Let us know you're coming!",
+      text: "Even though walk-in is always completely free for all our activities, we really appreciate it if you let us know in the WhatsApp community that you're planning to come. That way we can plan how much food to prepare, ensure there's enough space, and help other visitors know what to expect.",
+      prompt: "Let us know in the WhatsApp community! Not a member yet?",
+      link: "Sign up here!"
+    },
+    communityForm: {
+      header: "Join the WhatsApp Group",
+      title: "Join our WhatsApp Community",
+      subtitle: "Stay updated on upcoming activities, let us know when you're joining, and connect with peers.",
+      nameLabel: "Preferred Name *",
+      namePlaceholder: "What should we call you?",
+      ageLabel: "Age *",
+      agePlaceholder: "e.g. 21",
+      phoneLabel: "WhatsApp Phone Number *",
+      phonePlaceholder: "+31 6 12345678",
+      emailLabel: "Email Address (optional)",
+      emailPlaceholder: "your@email.com",
+      sourceLabel: "How did you hear about the Huiskamer? *",
+      sourcePlaceholder: "e.g. via friends, school, social media, walked by...",
+      requiredError: "Please fill in all required fields (*).",
+      submitBtn: "Join WhatsApp Community",
+      safetyNote: "We treat your information with strict confidentiality and solely use it to verify and safely welcome you into our community.",
+      successTitle: "Registration Received!",
+      successMessage: "Someone from our team will review your details as soon as possible to add you to the community. This personal approach ensures our community and activities remain safe and trusted, which is very important to us.",
+      successCountdown: "Redirecting you automatically in",
+      seconds: "seconds...",
+      backBtn: "Return now"
     },
     eetkamerScreen: {
       header: "The Dining Room",
@@ -340,6 +524,28 @@ export const HuiskamerText = {
       whoTitle: "Host",
       whoText: "Anne van Lier",
       description: "Every Friday we transform the Volkshuis into The Crafthub! Under the guidance of Anne van Lier, the group gets to work on all kinds of fun craft and creative projects. Whether you have a lot of experience or just feel like working with your hands, everyone can join. It is the perfect way to relax creatively and make beautiful things together!"
+    },
+    queerHuiskamerScreen: {
+      header: "The Queer Living Room",
+      cardTitle: "When do we meet?",
+      cardSub: "Every Thursday from 19:30 to 21:00",
+      cardSubExtra: "Open walk-in (often runs later!)",
+      locTitle: "Location",
+      locText: "Het Leidse Volkshuis",
+      whoTitle: "For who?",
+      whoText: "LGBTQIA+ youth & allies (16 to 30 years old)",
+      description: "The Queer Living Room is a warm, safe, and welcoming spot specially created for LGBTQIA+ young adults and allies in Leiden. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Whether you're here to have great chats, make new friends, play games, or simply unwind in an accepting environment: everyone is welcome!"
+    },
+    transjongerenScreen: {
+      header: "Trans Youth Walk-in",
+      cardTitle: "When is the walk-in?",
+      cardSub: "Every Thursday at 18:30",
+      cardSubExtra: "Open walk-in, flowing into The Queer Living Room",
+      locTitle: "Location",
+      locText: "Het Leidse Volkshuis",
+      whoTitle: "For who?",
+      whoText: "Transgender, non-binary, and questioning youth",
+      description: "The Trans Youth Walk-in is a trusted space to meet other young people walking similar paths. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Drop by for a cup of tea, open conversations, or just to hang out in a welcoming, judgment-free environment."
     }
   }
 };

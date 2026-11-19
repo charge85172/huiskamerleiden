@@ -5,8 +5,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
 import { useLanguage } from '../context/LanguageContext';
 
-export default function EetkamerScreen({ navigation }) {
+import CommunityNotice from '../components/CommunityNotice';
+
+export default function EetkamerScreen({ route, navigation }) {
   const { t } = useLanguage();
+  const isBusiness = route?.params?.version === 'Bedrijven';
+  const texts = (isBusiness && t.business?.eetkamerScreen) ? t.business.eetkamerScreen : t.eetkamerScreen;
   const [nextDate, setNextDate] = useState('');
 
   useEffect(() => {
@@ -33,7 +37,7 @@ export default function EetkamerScreen({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <ArrowLeft color="#fff" size={24} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>{t.eetkamerScreen.header}</Text>
+        <Text style={styles.headerTitle}>{texts.header}</Text>
         <View style={{ width: 24 }} />
       </View>
 
@@ -42,9 +46,9 @@ export default function EetkamerScreen({ navigation }) {
 
         <BlurView intensity={30} tint="dark" style={styles.highlightCard}>
           <Calendar color="#00C9FF" size={32} style={{ marginBottom: 15 }} />
-          <Text style={styles.cardTitle}>{t.eetkamerScreen.cardTitle}</Text>
+          <Text style={styles.cardTitle}>{texts.cardTitle}</Text>
           <Text style={styles.dateText}>{nextDate}</Text>
-          <Text style={styles.subText}>{t.eetkamerScreen.cardSub}</Text>
+          <Text style={styles.subText}>{texts.cardSub}</Text>
         </BlurView>
 
         <View style={styles.infoRow}>
@@ -52,8 +56,8 @@ export default function EetkamerScreen({ navigation }) {
             <MapPin color="#fff" size={20} />
           </View>
           <View style={styles.infoTextContainer}>
-            <Text style={styles.infoTitle}>{t.eetkamerScreen.locTitle}</Text>
-            <Text style={styles.infoText}>{t.eetkamerScreen.locText}</Text>
+            <Text style={styles.infoTitle}>{texts.locTitle}</Text>
+            <Text style={styles.infoText}>{texts.locText}</Text>
           </View>
         </View>
 
@@ -62,12 +66,14 @@ export default function EetkamerScreen({ navigation }) {
             <Users color="#fff" size={20} />
           </View>
           <View style={styles.infoTextContainer}>
-            <Text style={styles.infoTitle}>{t.eetkamerScreen.whoTitle}</Text>
-            <Text style={styles.infoText}>{t.eetkamerScreen.whoText}</Text>
+            <Text style={styles.infoTitle}>{texts.whoTitle}</Text>
+            <Text style={styles.infoText}>{texts.whoText}</Text>
           </View>
         </View>
 
-        <Text style={styles.description}>{t.eetkamerScreen.description}</Text>
+        <Text style={styles.description}>{texts.description}</Text>
+
+        <CommunityNotice navigation={navigation} isBusiness={isBusiness} />
       </ScrollView>
     </View>
   );

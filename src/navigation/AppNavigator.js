@@ -6,6 +6,9 @@ import IntroScreen from '../screens/IntroScreen';
 import HomeScreen from '../screens/HomeScreen';
 import EetkamerScreen from '../screens/EetkamerScreen';
 import CrafthubScreen from '../screens/CrafthubScreen';
+import QueerHuiskamerScreen from '../screens/QueerHuiskamerScreen';
+import TransjongerenScreen from '../screens/TransjongerenScreen';
+import CommunityFormScreen from '../screens/CommunityFormScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +26,9 @@ export default function AppNavigator() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Eetkamer" component={EetkamerScreen} />
         <Stack.Screen name="Crafthub" component={CrafthubScreen} />
+        <Stack.Screen name="QueerHuiskamer" component={QueerHuiskamerScreen} />
+        <Stack.Screen name="Transjongeren" component={TransjongerenScreen} />
+        <Stack.Screen name="CommunityForm" component={CommunityFormScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

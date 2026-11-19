@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Utensils, Brush } from 'lucide-react-native';
+import { Utensils, Brush, Heart, Users } from 'lucide-react-native';
 import { BlurView } from 'expo-blur';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -21,7 +21,7 @@ export default function Activities({ version = 'Jongeren', navigation }) {
         </Text>
       </Text>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Eetkamer')} activeOpacity={0.7}>
+      <TouchableOpacity onPress={() => navigation.navigate('Eetkamer', { version })} activeOpacity={0.7}>
         <CardWrapper {...wrapperProps}>
           <View style={[styles.iconBox, { backgroundColor: isBusiness ? 'rgba(255,0,128,0.1)' : '#FF0080' }]}>
             <Utensils size={24} color={isBusiness ? '#FF0080' : "#fff"} />
@@ -33,7 +33,7 @@ export default function Activities({ version = 'Jongeren', navigation }) {
         </CardWrapper>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Crafthub')} activeOpacity={0.7}>
+      <TouchableOpacity onPress={() => navigation.navigate('Crafthub', { version })} activeOpacity={0.7}>
         <CardWrapper {...wrapperProps}>
           <View style={[styles.iconBox, { backgroundColor: isBusiness ? 'rgba(142,45,226,0.1)' : '#8E2DE2' }]}>
             <Brush size={24} color={isBusiness ? '#8E2DE2' : "#fff"} />
@@ -41,6 +41,30 @@ export default function Activities({ version = 'Jongeren', navigation }) {
           <View style={styles.textContent}>
             <Text style={styles.cardTitle}>{texts.crafthubTitle}</Text>
             <Text style={styles.cardSubtitle}>{texts.crafthubSubtitle}</Text>
+          </View>
+        </CardWrapper>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate('QueerHuiskamer', { version })} activeOpacity={0.7}>
+        <CardWrapper {...wrapperProps}>
+          <View style={[styles.iconBox, { backgroundColor: isBusiness ? 'rgba(224,64,251,0.1)' : '#E040FB' }]}>
+            <Heart size={24} color={isBusiness ? '#E040FB' : "#fff"} />
+          </View>
+          <View style={styles.textContent}>
+            <Text style={styles.cardTitle}>{texts.queerHuiskamerTitle}</Text>
+            <Text style={styles.cardSubtitle}>{texts.queerHuiskamerSubtitle}</Text>
+          </View>
+        </CardWrapper>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate('Transjongeren', { version })} activeOpacity={0.7}>
+        <CardWrapper {...wrapperProps}>
+          <View style={[styles.iconBox, { backgroundColor: isBusiness ? 'rgba(0,201,255,0.1)' : '#00C9FF' }]}>
+            <Users size={24} color={isBusiness ? '#00C9FF' : "#fff"} />
+          </View>
+          <View style={styles.textContent}>
+            <Text style={styles.cardTitle}>{texts.transjongerenTitle}</Text>
+            <Text style={styles.cardSubtitle}>{texts.transjongerenSubtitle}</Text>
           </View>
         </CardWrapper>
       </TouchableOpacity>

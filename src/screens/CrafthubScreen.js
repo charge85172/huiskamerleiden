@@ -5,8 +5,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
 import { useLanguage } from '../context/LanguageContext';
 
-export default function CrafthubScreen({ navigation }) {
+import CommunityNotice from '../components/CommunityNotice';
+
+export default function CrafthubScreen({ route, navigation }) {
   const { t } = useLanguage();
+  const isBusiness = route?.params?.version === 'Bedrijven';
+  const texts = (isBusiness && t.business?.crafthubScreen) ? t.business.crafthubScreen : t.crafthubScreen;
 
   return (
     <View style={styles.container}>
@@ -16,7 +20,7 @@ export default function CrafthubScreen({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <ArrowLeft color="#fff" size={24} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>{t.crafthubScreen.header}</Text>
+        <Text style={styles.headerTitle}>{texts.header}</Text>
         <View style={{ width: 24 }} />
       </View>
 
@@ -25,9 +29,9 @@ export default function CrafthubScreen({ navigation }) {
 
         <BlurView intensity={30} tint="dark" style={styles.highlightCard}>
           <Brush color="#8E2DE2" size={32} style={{ marginBottom: 15 }} />
-          <Text style={styles.cardTitle}>{t.crafthubScreen.cardTitle}</Text>
-          <Text style={styles.dateText}>{t.crafthubScreen.cardSub}</Text>
-          <Text style={styles.subText}>{t.crafthubScreen.cardSubExtra}</Text>
+          <Text style={styles.cardTitle}>{texts.cardTitle}</Text>
+          <Text style={styles.dateText}>{texts.cardSub}</Text>
+          <Text style={styles.subText}>{texts.cardSubExtra}</Text>
         </BlurView>
 
         <View style={styles.infoRow}>
@@ -35,8 +39,8 @@ export default function CrafthubScreen({ navigation }) {
             <MapPin color="#fff" size={20} />
           </View>
           <View style={styles.infoTextContainer}>
-            <Text style={styles.infoTitle}>{t.crafthubScreen.locTitle}</Text>
-            <Text style={styles.infoText}>{t.crafthubScreen.locText}</Text>
+            <Text style={styles.infoTitle}>{texts.locTitle}</Text>
+            <Text style={styles.infoText}>{texts.locText}</Text>
           </View>
         </View>
 
@@ -45,12 +49,14 @@ export default function CrafthubScreen({ navigation }) {
             <UserCheck color="#fff" size={20} />
           </View>
           <View style={styles.infoTextContainer}>
-            <Text style={styles.infoTitle}>{t.crafthubScreen.whoTitle}</Text>
-            <Text style={styles.infoText}>{t.crafthubScreen.whoText}</Text>
+            <Text style={styles.infoTitle}>{texts.whoTitle}</Text>
+            <Text style={styles.infoText}>{texts.whoText}</Text>
           </View>
         </View>
 
-        <Text style={styles.description}>{t.crafthubScreen.description}</Text>
+        <Text style={styles.description}>{texts.description}</Text>
+
+        <CommunityNotice navigation={navigation} isBusiness={isBusiness} />
       </ScrollView>
     </View>
   );

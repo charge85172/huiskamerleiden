@@ -4,7 +4,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": null,
-  "cleanUrls": true,
   "rewrites": [
     {
       "source": "/(.*)",
@@ -12,3 +11,4 @@
     }
   ]
 }
+

@@ -6,7 +6,7 @@ import { useLanguage } from '../context/LanguageContext';
 
 export default function Activities({ version = 'Jongeren', navigation }) {
   const { t } = useLanguage();
-  const isBusiness = version === 'Bedrijven';
+  const isBusiness = version === 'Bedrijven' || version === 'business';
   const texts = isBusiness ? t.business.activities : t.activities;
 
   const CardWrapper = isBusiness ? View : BlurView;
@@ -73,7 +73,7 @@ export default function Activities({ version = 'Jongeren', navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { padding: 20, paddingVertical: 20 },
+  container: { padding: 20, paddingVertical: 20, width: '100%', maxWidth: 1200, alignSelf: 'center' },
   heading: { fontSize: 28, fontWeight: 'bold', color: '#fff', textAlign: 'center', marginBottom: 30 },
   highlight: { color: '#00C9FF' },
   highlightBusiness: { color: '#8E2DE2' },

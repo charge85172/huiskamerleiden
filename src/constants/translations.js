@@ -6,7 +6,7 @@ export const HuiskamerText = {
       logoHighlight: "Huiskamer",
     },
     intro: {
-      welcomeText: "Welkom op de website van Stichting Huiskamer Leiden! Ben jij geïnteresseerd om een keer langs te komen? Of wil je graag samenwerken met ons? Maak hieronder je keuze:",
+      welcomeText: "Welkom op de website van Stichting De Leidse Huiskamer! Ben jij geïnteresseerd om een keer langs te komen? Of wil je graag samenwerken met ons? Maak hieronder je keuze:",
       youthBtn: "Ga door naar Jongerenversie",
       businessBtn: "Ga door naar Bedrijfsversie",
     },
@@ -14,7 +14,7 @@ export const HuiskamerText = {
       switchToBusiness: "Ga naar bedrijfsversie",
       switchToYouth: "Ga naar jongerenversie",
     },
-    
+
     // JONGEREN VERSIE (YOUTH) - Default
     hero: {
       pill: "Voor en door jongeren",
@@ -25,8 +25,9 @@ export const HuiskamerText = {
       titleMid2: " en ",
       titlePurple: "jezelf te zijn",
       titleEnd: ".",
-      subtitle: "Zoek je een plek waar je gewoon binnen kunt lopen, zonder gedoe? Welkom bij de Huiskamer. Een spot voor en door jongeren tussen de 17 en 30+ jaar.",
+      subtitle: "Zoek je een plek waar je gewoon binnen kunt lopen, zonder gedoe? Welkom bij de Huiskamer. Een spot voor en door jongeren van 16 tot 30+ jaar.",
       btn1: "Kom eens langs",
+      btn2: "Neem contact op",
       badge: "Jouw Community"
     },
     about: {
@@ -44,7 +45,7 @@ export const HuiskamerText = {
       titleStart: "Wat organiseren wij ",
       titleHighlight: "regelmatig?",
       eetkamerTitle: "De Eetkamer",
-      eetkamerSubtitle: "Eens in de 2 weken op woensdag",
+      eetkamerSubtitle: "Tweewekelijks (om de week op woensdag)",
       crafthubTitle: "De Crafthub",
       crafthubSubtitle: "Elke vrijdag creatief bezig zijn",
       queerHuiskamerTitle: "De Queer Huiskamer",
@@ -59,12 +60,12 @@ export const HuiskamerText = {
       grid2: "Community",
       grid3: "Netwerk",
       grid4: "Centrale Plek",
-      text: "Het doel van de Huiskamer is om een ontmoetingsplek te zijn voor jongvolwassen. Daarnaast is het ook een plek waar jongeren hun passie kunnen delen en beoefenen. Waarbij ze talenten, ervaringen en skills meebrengen en die binnen de Huiskamer kunnen ontwikkelen en inzetten."
+      text: "Het doel van de Huiskamer is om een ontmoetingsplek te zijn voor jongvolwassenen. Daarnaast is het ook een plek waar jongeren hun passie kunnen delen en beoefenen. Waarbij ze talenten, ervaringen en skills meebrengen en die binnen de Huiskamer kunnen ontwikkelen en inzetten."
     },
     thirdPlace: {
       titleStart: "Wat betekent een ",
       titleHighlight: "Derde Plek?",
-      text: "Een plek om samen te komen noemt men ook wel een ‘third place’: een plek buiten school, werk of gezin waar jongvolwassen in een huiselijke setting elkaar kunnen ontmoeten. Ze voelen zich regelmatig eenzaam en zitten vaak in hun eigen (online)bubbel. De HK wil hier iets aan doen.",
+      text: "Een plek om samen te komen noemt men ook wel een ‘third place’: een plek buiten school, werk of gezin waar jongvolwassenen in een huiselijke setting elkaar kunnen ontmoeten. Ze voelen zich regelmatig eenzaam en zitten vaak in hun eigen (online)bubbel. De HK wil hier iets aan doen.",
       gradTitle: "Samen eenzaamheid tegengaan",
       gradText: "Dit kan door samen te eten of op een andere manier in sociaal contact komen. De huiskamer wil samen met de stad de eenzaamheid van jongvolwassenen tegengaan."
     },
@@ -80,7 +81,7 @@ export const HuiskamerText = {
       gradTitle: "Ruimte voor jouw eigen ding",
       gradText: "De HK is van ons allemaal. We letten er samen op dat iedereen zich hier welkom voelt en dat niemand wordt buitengesloten. Zie de Huiskamer als een paraplu: daaronder is plek voor allerlei verschillende kleine groepjes en activiteiten."
     },
-    
+
     // BEDRIJVEN VERSIE (BUSINESS)
     business: {
       hero: {
@@ -111,7 +112,7 @@ export const HuiskamerText = {
         titleStart: "Onze ",
         titleHighlight: "Initiatieven",
         eetkamerTitle: "De Eetkamer (Samen Eten)",
-        eetkamerSubtitle: "Verbindende wekelijkse maaltijden",
+        eetkamerSubtitle: "Verbindende tweewekelijkse maaltijden (om de week op woensdag)",
         crafthubTitle: "De Crafthub (Creativiteit)",
         crafthubSubtitle: "Gezamenlijke creatieve workshops",
         queerHuiskamerTitle: "De Queer Huiskamer (Inclusieve Community)",
@@ -133,7 +134,7 @@ export const HuiskamerText = {
         titleHighlight: "stad",
         text: "Graag werken wij als de Huiskamer samen met allerlei verschillende organisaties in de stad. Dus ben jij als opleiding, stichting of organisatie geïnteresseerd in ons initiatief, laat het ons vooral weten.",
         gradTitle: "Samen opzetten",
-        gradText: "Wij willen de HK samen met jullie gaan opzetten en jongvolwassen en studenten een mogelijkheid bieden om met elkaar een community op te zetten in de stad."
+        gradText: "Wij willen de HK samen met jullie gaan opzetten en jongvolwassenen en studenten een mogelijkheid bieden om met elkaar een community op te zetten in de stad."
       },
       info: {
         titleStart: "Wat bieden ",
@@ -141,21 +142,37 @@ export const HuiskamerText = {
         card1Title: "Fysieke Ruimte",
         card1Text: "Wij bieden een fysieke, huiselijke locatie (De Third Place) waar jouw doelgroep zich op hun gemak voelt.",
         card2Title: "Een Sterk Netwerk",
-        card2Text: "Toegang tot een brede groep jongvolwassenen (17-30+ jaar) uit alle achtergronden en levensstijlen in Leiden.",
+        card2Text: "Toegang tot een brede groep jongvolwassenen (16 tot 30+ jaar) uit alle achtergronden en levensstijlen in Leiden.",
         card3Title: "Ondersteuning",
         card3Text: "Een plek voor jonge makers, waarbij we samen de ruimte en het platform bieden om aan de slag te gaan met hun eigen ideeën.",
         gradTitle: "Eenzaamheid Tegengaan",
         gradText: "Het doel van de Huiskamer is om eenzaamheid tegen te gaan en (mentale) gezondheid te verbeteren. Obstakels wegnemen en hen de ruimte geven om zich te ontwikkelen. En dat op één plek."
       },
+      communityNotice: {
+        badge: "Partners & Samenwerking",
+        title: "Samenwerken met Stichting De Leidse Huiskamer?",
+        text: "Wil jouw organisatie, opleiding of bedrijf bijdragen aan maatschappelijke impact voor jongeren in Leiden? We gaan graag in gesprek.",
+        prompt: "Neem direct contact met ons op via",
+        link: "leidsehuiskamer@gmail.com"
+      },
+      communityForm: {
+        header: "Zakelijk Contact",
+        title: "Samenwerken als partner of organisatie",
+        subtitle: "De WhatsApp-community is speciaal voor jongeren (16 tot 30+ jaar). Voor zakelijke vragen, partnerschappen of maatschappelijke samenwerkingen kun je direct mailen naar ons bestuur en team.",
+        emailBtn: "Mail naar leidsehuiskamer@gmail.com",
+        infoTitle: "Officiële gegevens",
+        switchToYouthLink: "Ben je een jongere en wil je bij de WhatsApp-community? Ga naar het jongerenformulier",
+        backBtn: "Terug naar overzicht"
+      },
       eetkamerScreen: {
         header: "De Eetkamer",
         cardTitle: "Wanneer eten we samen?",
-        cardSub: "Om de week op woensdagavond",
+        cardSub: "Tweewekelijks (om de week op woensdagavond)",
         locTitle: "Locatie",
         locText: "Het Leidse Volkshuis",
         whoTitle: "Doelgroep & Partners",
-        whoText: "Jongeren van 16 tot 30 jaar, maatschappelijke partners en vrijwilligers",
-        description: "De Eetkamer is hét laagdrempelige ontmoetingspunt waar jongeren en stadsgenoten samenkomen rondom gezonde, gezamenlijke maaltijden. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dit initiatief verbindt diverse doelgroepen en bestrijdt eenzaamheid in de praktijk."
+        whoText: "Jongeren van 16 tot 30+ jaar, maatschappelijke partners en vrijwilligers",
+        description: "De Eetkamer is hét laagdrempelige ontmoetingspunt van Stichting De Leidse Huiskamer waar jongeren uit allerlei hoeken van de stad samenkomen rondom gezamenlijke maaltijden. Juist aan één grote eettafel verkleinen we verschillen, gaan we polarisatie tegen en bouwen we aan echte ontmoeting en begrip. Samen met maatschappelijke partners en vrijwilligers maken we directe impact in Leiden op een plek waar iedereen welkom is, ongeacht je achtergrond."
       },
       crafthubScreen: {
         header: "De Crafthub",
@@ -166,7 +183,7 @@ export const HuiskamerText = {
         locText: "Het Leidse Volkshuis",
         whoTitle: "Begeleiding",
         whoText: "Onder leiding van Anne van Lier & creatieve coaches",
-        description: "De Crafthub biedt jongeren een inspirerende werkplaats om creatieve vaardigheden te ontwikkelen en talenten te ontdekken. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Samenwerkingen met bedrijven en culturele instellingen maken nieuwe materialen en technieken toegankelijk voor iedereen."
+        description: "De Crafthub biedt jongeren in Leiden een inspirerend platform om hun creativiteit en talenten te ontdekken en verder te ontwikkelen. Samen met partners, makers en culturele organisaties geven we jongeren de ruimte om eigen ideeën uit te voeren en samen te werken over grenzen en bubbels heen. Zo vergroten we de maatschappelijke impact in de stad en blijft onze werkplaats een open plek waar iedereen welkom is, ongeacht ervaring of achtergrond."
       },
       queerHuiskamerScreen: {
         header: "De Queer Huiskamer",
@@ -177,7 +194,7 @@ export const HuiskamerText = {
         locText: "Het Leidse Volkshuis",
         whoTitle: "Doelgroep & Partners",
         whoText: "LHBTQIA+ jongvolwassenen, partners en maatschappelijke organisaties",
-        description: "Met De Queer Huiskamer bieden wij een structurele safe space voor inclusie, sociale binding en mentale gezondheid van jonge LHBTQIA+ inwoners in Leiden. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. In samenwerking met maatschappelijke instellingen stimuleren we weerbaarheid, ontmoeting en dialoog."
+        description: "Met De Queer Huiskamer bieden wij een structurele, veilige en warme plek voor inclusie, sociale binding en mentaal welzijn van LHBTQIA+ jongeren en allies in Leiden. Door open gesprek en echte ontmoeting te faciliteren bouwen we bruggen in de stad en gaan we polarisatie actief tegen. Samen met maatschappelijke partners geven we jongeren een eigen platform waar iedereen welkom is, ongeacht wie je bent of wat je achtergrond is."
       },
       transjongerenScreen: {
         header: "Inloop Transjongeren",
@@ -187,22 +204,25 @@ export const HuiskamerText = {
         locTitle: "Locatie",
         locText: "Het Leidse Volkshuis",
         whoTitle: "Doelgroep & Begeleiding",
-        whoText: "Transgender en non-binaire jongeren (16-30 jaar) & professionele begeleiding",
-        description: "De Inloop Transjongeren voorziet in een grote behoefte aan laagdrempelige, veilige peer-support voor transgender en genderqueer jongvolwassenen. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. We werken nauw samen met zorgverleners en belangenorganisaties om tijdig steun en aansluiting te bieden."
+        whoText: "Transgender en non-binaire jongeren (16 tot 30+ jaar) & professionele begeleiding",
+        description: "De Inloop Transjongeren voorziet in een essentiële behoefte aan laagdrempelige, veilige peer-support voor transgender, non-binaire en zoekende jongeren in Leiden. Door jongeren zelf een stem en een vertrouwd platform te geven versterken we weerbaarheid, eigenaarschap en wederzijds begrip in de stad. In samenwerking met zorg- en welzijnspartners maken we blijvende maatschappelijke impact op een plek waar iedereen welkom is, ongeacht je achtergrond."
       },
     },
 
     footer: {
       text: "De Huiskamer is die huiselijke plek waar niks moet en (bijna) alles mag. Geen ongemakkelijke stiltes, maar samen optrekken en doen waar jij energie van krijgt.",
-      building: "Het Leidse Volkshuis",
-      address1: "Apothekersdijk 33",
-      address2: "2312 DD Leiden",
-      copyright: "© 2026 De Leidse Huiskamer"
+      organization: "Stichting De Leidse Huiskamer",
+      building: "Het Volkshuis",
+      address1: "Apothekersdijk 33a",
+      address2: "Leiden",
+      kvk: "KvK: 42091204",
+      email: "leidsehuiskamer@gmail.com",
+      copyright: "© 2026 Stichting De Leidse Huiskamer"
     },
     communityNotice: {
       badge: "WhatsApp Community",
       title: "Laat weten dat je komt!",
-      text: "Ondanks dat de inloop bij al onze activiteiten altijd helemaal vrij is, vinden we het ontzettend fijn als je in de WhatsApp community aangeeft dat je plant te komen. Zo kunnen we rekening houden met hoeveel we koken (zoals bij de Eetkamer), hoeveel ruimte er is, en is het voor andere bezoekers fijn om te weten hoe gezellig druk het wordt.",
+      text: "Ondanks dat de inloop bij al onze activiteiten altijd helemaal vrij is, vinden we het ontzettend fijn als je in de WhatsApp community aangeeft dat je van plan bent om te komen. Zo kunnen we rekening houden met hoeveel we koken (zoals bij de Eetkamer), hoeveel ruimte er is, en is het voor andere bezoekers fijn om te weten hoe gezellig druk het wordt.",
       prompt: "Laat het weten in de WhatsApp community! Zit je daar nog niet bij?",
       link: "Meld je hier aan!"
     },
@@ -216,28 +236,37 @@ export const HuiskamerText = {
       agePlaceholder: "Bijv. 21",
       phoneLabel: "WhatsApp Telefoonnummer *",
       phonePlaceholder: "06 12345678",
-      emailLabel: "E-mailadres (optioneel)",
+      emailLabel: "E-mailadres *",
       emailPlaceholder: "jouw@email.nl",
-      sourceLabel: "Hoe ben je op de Huiskamer terecht gekomen? *",
+      sourceLabel: "Hoe ben je bij de Huiskamer terechtgekomen? *",
       sourcePlaceholder: "Bijv. via vrienden, school, Instagram, langsgelopen...",
-      requiredError: "Vul alsjeblieft alle verplichte velden (*) in.",
+      consentLabel: "Ik ga ermee akkoord dat Stichting De Leidse Huiskamer mijn gegevens uitsluitend gebruikt om mij toe te voegen aan de WhatsApp-community (AVG). *",
+      requiredError: "Controleer de gemarkeerde velden en probeer het opnieuw.",
+      nameError: "Vul je naamvoorkeur in.",
+      ageError: "Vul een geldige leeftijd in (getal tussen 12 en 120).",
+      phoneError: "Vul een geldig telefoonnummer in (minimaal 9 cijfers).",
+      emailError: "Vul een geldig e-mailadres in.",
+      sourceError: "Laat ons weten hoe je bij de Huiskamer bent terechtgekomen.",
+      consentError: "Ga akkoord met de AVG-toestemming om je aan te melden.",
       submitBtn: "Aanmelden voor WhatsApp",
       safetyNote: "Wij behandelen je gegevens strikt vertrouwelijk en gebruiken deze uitsluitend om je veilig toe te voegen aan onze community.",
-      successTitle: "Aanmelding ontvangen!",
-      successMessage: "Iemand van ons team gaat zo snel mogelijk kijken om je in de community toe te voegen. Deze persoonlijke aanpak zorgt ervoor dat onze community en activiteiten veilig en vertrouwd blijven, omdat wij dat ontzettend belangrijk vinden.",
-      successCountdown: "Je wordt automatisch teruggestuurd over",
-      seconds: "seconden...",
-      backBtn: "Direct terug naar overzicht"
+      safetyBadge: "Veilige & Gecontroleerde Toegang",
+      successTitle: "WhatsApp-bericht staat klaar!",
+      successMessage: "We hebben een vooringevuld WhatsApp-bericht voor je klaargezet. Verstuur het bericht in WhatsApp zodat iemand van ons team je persoonlijk en veilig kan toevoegen aan de community.",
+      openWhatsAppAgainBtn: "Open WhatsApp opnieuw",
+      emailFallbackPrompt: "Opent WhatsApp niet of mail je liever?",
+      emailFallbackBtn: "Aanmelden via leidsehuiskamer@gmail.com",
+      backBtn: "Terug naar overzicht"
     },
     eetkamerScreen: {
       header: "De Eetkamer",
       cardTitle: "Wanneer eten we weer samen?",
-      cardSub: "Om de week op woensdagavond",
+      cardSub: "Tweewekelijks (om de week op woensdagavond)",
       locTitle: "Locatie",
       locText: "Het Leidse Volkshuis",
       whoTitle: "Voor wie?",
-      whoText: "Jongeren van 16 tot 30 jaar",
-      description: "Schuif gezellig aan! De Eetkamer is de perfecte plek om nieuwe mensen te leren kennen onder het genot van een heerlijke maaltijd. Het draait om samen zijn, gezelligheid en natuurlijk goed eten. Iedereen tussen de 16 en 30 jaar is van harte welkom in het Volkshuis."
+      whoText: "Jongeren van 16 tot 30+ jaar",
+      description: "Schuif gezellig aan! De Eetkamer is de perfecte plek om nieuwe mensen te leren kennen onder het genot van een heerlijke maaltijd. Het draait om samen zijn, gezelligheid en natuurlijk goed eten. Iedereen van 16 tot 30+ jaar is van harte welkom in het Volkshuis, ongeacht je achtergrond."
     },
     crafthubScreen: {
       header: "De Crafthub",
@@ -258,8 +287,8 @@ export const HuiskamerText = {
       locTitle: "Locatie",
       locText: "Het Leidse Volkshuis",
       whoTitle: "Voor wie?",
-      whoText: "LHBTQIA+ jongeren & allies (16 t/m 30 jaar)",
-      description: "De Queer Huiskamer is een warme, veilige en gezellige plek speciaal voor LHBTQIA+ jongeren en allies in Leiden. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Of je nu langs wilt komen voor een fijn gesprek, om nieuwe vrienden te maken, spelletjes te spelen of gewoon lekker te ontspannen: iedereen is van harte welkom in het Volkshuis."
+      whoText: "LHBTQIA+ jongeren & allies (16 tot 30+ jaar)",
+      description: "De Queer Huiskamer is een warme, veilige en gezellige plek speciaal voor LHBTQIA+ jongeren en allies in Leiden. Bij ons draait het om echte ontmoeting en verbinding: weg uit je eigen bubbel, polarisatie tegengaan door naar elkaar te luisteren en jongeren een eigen platform geven. Of je nu langs wilt komen voor een fijn gesprek, om nieuwe vrienden te maken, spelletjes te spelen of gewoon lekker te ontspannen: iedereen is van harte welkom, ongeacht je achtergrond."
     },
     transjongerenScreen: {
       header: "Inloop Transjongeren",
@@ -269,11 +298,11 @@ export const HuiskamerText = {
       locTitle: "Locatie",
       locText: "Het Leidse Volkshuis",
       whoTitle: "Voor wie?",
-      whoText: "Transgender, non-binaire en zoekende jongeren",
-      description: "De Inloop Transjongeren is een vertrouwde plek om andere jongeren te ontmoeten die in een vergelijkbaar proces zitten of hebben gezeten. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Kom gerust binnenwandelen voor een kop thee, een goed gesprek of gewoon om in een veilige omgeving jezelf te zijn."
+      whoText: "Transgender, non-binaire en zoekende jongeren (16 tot 30+ jaar)",
+      description: "De Inloop Transjongeren is een vertrouwde plek om andere jongeren te ontmoeten die in een vergelijkbaar proces zitten of hebben gezeten. Hier geven we jou en elkaar een eigen platform om ervaringen te delen, vragen te stellen en samen sterker te staan in Leiden. Kom gerust binnenwandelen voor een kop thee, een goed gesprek of gewoon om in alle rust jezelf te zijn — iedereen is welkom, ongeacht je achtergrond."
     }
   },
-  
+
   en: {
     ui: {
       langBtn: "NL",
@@ -281,7 +310,7 @@ export const HuiskamerText = {
       logoHighlight: "Living Room",
     },
     intro: {
-      welcomeText: "Welcome to the website of the Leiden Living Room Foundation! Are you interested in visiting us? Or would you like to collaborate with us? Make your choice below:",
+      welcomeText: "Welcome to the website of Stichting De Leidse Huiskamer! Are you interested in visiting us? Or would you like to collaborate with us? Make your choice below:",
       youthBtn: "Continue to Youth Version",
       businessBtn: "Continue to Business Version",
     },
@@ -289,7 +318,7 @@ export const HuiskamerText = {
       switchToBusiness: "Switch to business version",
       switchToYouth: "Switch to youth version",
     },
-    
+
     // YOUTH VERSION
     hero: {
       pill: "For and by young adults",
@@ -300,8 +329,9 @@ export const HuiskamerText = {
       titleMid2: " and to ",
       titlePurple: "be yourself",
       titleEnd: ".",
-      subtitle: "Looking for a place where you can just walk in, no strings attached? Welcome to the Living Room (HK). A spot for and by young adults between 17 and 30+ years old.",
+      subtitle: "Looking for a place where you can just walk in, no strings attached? Welcome to the Living Room (HK). A spot for and by young adults from 16 to 30+ years.",
       btn1: "Drop by sometime",
+      btn2: "Contact us",
       badge: "Your Community"
     },
     about: {
@@ -319,7 +349,7 @@ export const HuiskamerText = {
       titleStart: "What do we organize ",
       titleHighlight: "regularly?",
       eetkamerTitle: "The Dining Room",
-      eetkamerSubtitle: "Every other Wednesday",
+      eetkamerSubtitle: "Biweekly (every other Wednesday)",
       crafthubTitle: "The Crafthub",
       crafthubSubtitle: "Get creative every Friday",
       queerHuiskamerTitle: "The Queer Living Room",
@@ -386,7 +416,7 @@ export const HuiskamerText = {
         titleStart: "Our ",
         titleHighlight: "Initiatives",
         eetkamerTitle: "The Dining Room",
-        eetkamerSubtitle: "Connecting weekly meals",
+        eetkamerSubtitle: "Connecting biweekly meals (every other Wednesday)",
         crafthubTitle: "The Crafthub",
         crafthubSubtitle: "Collaborative creative workshops",
         queerHuiskamerTitle: "The Queer Living Room",
@@ -416,21 +446,37 @@ export const HuiskamerText = {
         card1Title: "Physical Space",
         card1Text: "We offer a physical, homely location (The Third Place) where your target audience feels comfortable.",
         card2Title: "A Strong Network",
-        card2Text: "Access to a broad group of young adults (17-30+ years) from all backgrounds and lifestyles in Leiden.",
+        card2Text: "Access to a broad group of young adults (16 to 30+ years) from all backgrounds and lifestyles in Leiden.",
         card3Title: "Support",
         card3Text: "A place for young creators, where together we provide the space and platform to get started with their own ideas.",
         gradTitle: "Combating Loneliness",
         gradText: "The goal of the Living Room is to combat loneliness and improve (mental) health. Removing obstacles and giving them the space to develop. All in one place."
       },
+      communityNotice: {
+        badge: "Partners & Collaboration",
+        title: "Collaborate with Stichting De Leidse Huiskamer?",
+        text: "Would your organization, school, or business like to help create social impact for young adults in Leiden? We would love to connect.",
+        prompt: "Contact us directly at",
+        link: "leidsehuiskamer@gmail.com"
+      },
+      communityForm: {
+        header: "Business Contact",
+        title: "Collaborate as a partner or organization",
+        subtitle: "The WhatsApp community is specifically for young adults (16 to 30+ years). For business inquiries, partnerships, or social collaborations, please email our team directly.",
+        emailBtn: "Email leidsehuiskamer@gmail.com",
+        infoTitle: "Official details",
+        switchToYouthLink: "Are you a young adult looking to join the WhatsApp community? Switch to the youth form",
+        backBtn: "Return to overview"
+      },
       eetkamerScreen: {
         header: "The Dining Room",
         cardTitle: "When do we eat together?",
-        cardSub: "Every other Wednesday evening",
+        cardSub: "Biweekly (every other Wednesday evening)",
         locTitle: "Location",
         locText: "Het Leidse Volkshuis",
         whoTitle: "Target Audience & Partners",
-        whoText: "Youth from 16 to 30 years old, community partners, and volunteers",
-        description: "The Dining Room is our low-threshold community meal initiative where youth and local citizens connect around healthy food. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. This initiative combats loneliness through shared dining."
+        whoText: "Youth from 16 to 30+ years, community partners, and volunteers",
+        description: "The Dining Room is Stichting De Leidse Huiskamer's low-threshold meeting point where young people from across Leiden connect over shared meals. Sitting together at one table bridges divides, counters polarization, and fosters genuine understanding. Together with local partners and volunteers, we create lasting social impact in Leiden in a space where everyone is welcome, regardless of background."
       },
       crafthubScreen: {
         header: "The Crafthub",
@@ -441,7 +487,7 @@ export const HuiskamerText = {
         locText: "Het Leidse Volkshuis",
         whoTitle: "Guidance",
         whoText: "Guided by Anne van Lier & creative coaches",
-        description: "The Crafthub provides young adults with an inspiring workshop to develop creative skills and discover their passions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Collaborations with organizations and creative sectors make new techniques and tools accessible to all."
+        description: "The Crafthub gives young adults in Leiden an inspiring platform to explore their creativity and grow their talents. By partnering with local makers and cultural organizations, we empower young people to turn ideas into reality and connect beyond their usual bubbles. Together we make meaningful social impact in the city in an open workshop where everyone is welcome, regardless of background."
       },
       queerHuiskamerScreen: {
         header: "The Queer Living Room",
@@ -452,7 +498,7 @@ export const HuiskamerText = {
         locText: "Het Leidse Volkshuis",
         whoTitle: "Target Audience & Partners",
         whoText: "LGBTQIA+ youth, community partners, and organizations",
-        description: "Through The Queer Living Room we provide a structural safe space for inclusion, social connection, and mental well-being of young LGBTQIA+ residents in Leiden. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. In collaboration with societal organizations, we stimulate resilience, community, and dialogue."
+        description: "Through The Queer Living Room, we provide a structural, safe, and welcoming space for inclusion, social connection, and mental well-being for LGBTQIA+ young adults and allies in Leiden. By creating room for open dialogue and shared experiences, we actively counter polarization and build bridges across the city. Together with societal partners, we give young people a platform where everyone is welcome, regardless of background."
       },
       transjongerenScreen: {
         header: "Trans Youth Walk-in",
@@ -462,17 +508,20 @@ export const HuiskamerText = {
         locTitle: "Location",
         locText: "Het Leidse Volkshuis",
         whoTitle: "Target Audience & Support",
-        whoText: "Transgender and non-binary youth (16-30 years) & guided support",
-        description: "The Trans Youth Walk-in fulfills an essential need for low-threshold, safe peer support for transgender and genderqueer young adults. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis ipsum. Praesent mauris. We work closely with healthcare and youth welfare partners to provide timely connection and empowerment."
+        whoText: "Transgender and non-binary youth (16 to 30+ years) & guided support",
+        description: "The Trans Youth Walk-in fulfills an essential need for low-threshold, safe peer support for transgender, non-binary, and questioning youth in Leiden. By giving young people their own voice and trusted platform, we build resilience, community ownership, and mutual understanding. Working alongside care and youth welfare partners, we create lasting social impact in a space where everyone is welcome, regardless of background."
       },
     },
 
     footer: {
       text: "The living room is that cozy place where nothing is mandatory and (almost) everything is allowed. No awkward silences, but pulling together and doing what gives you energy.",
-      building: "Het Leidse Volkshuis",
-      address1: "Apothekersdijk 33",
-      address2: "2312 DD Leiden",
-      copyright: "© 2026 The Leiden Living Room"
+      organization: "Stichting De Leidse Huiskamer",
+      building: "Het Volkshuis",
+      address1: "Apothekersdijk 33a",
+      address2: "Leiden",
+      kvk: "KvK: 42091204",
+      email: "leidsehuiskamer@gmail.com",
+      copyright: "© 2026 Stichting De Leidse Huiskamer"
     },
     communityNotice: {
       badge: "WhatsApp Community",
@@ -491,28 +540,37 @@ export const HuiskamerText = {
       agePlaceholder: "e.g. 21",
       phoneLabel: "WhatsApp Phone Number *",
       phonePlaceholder: "+31 6 12345678",
-      emailLabel: "Email Address (optional)",
+      emailLabel: "Email Address *",
       emailPlaceholder: "your@email.com",
       sourceLabel: "How did you hear about the Huiskamer? *",
       sourcePlaceholder: "e.g. via friends, school, social media, walked by...",
-      requiredError: "Please fill in all required fields (*).",
+      consentLabel: "I agree that Stichting De Leidse Huiskamer may use my submitted details solely to add me to the WhatsApp community (GDPR). *",
+      requiredError: "Please review the highlighted fields and try again.",
+      nameError: "Please enter your preferred name.",
+      ageError: "Please enter a valid age (number between 12 and 120).",
+      phoneError: "Please enter a valid phone number (at least 9 digits).",
+      emailError: "Please enter a valid email address.",
+      sourceError: "Please let us know how you found the Living Room.",
+      consentError: "Please agree to the GDPR consent to sign up.",
       submitBtn: "Join WhatsApp Community",
       safetyNote: "We treat your information with strict confidentiality and solely use it to verify and safely welcome you into our community.",
-      successTitle: "Registration Received!",
-      successMessage: "Someone from our team will review your details as soon as possible to add you to the community. This personal approach ensures our community and activities remain safe and trusted, which is very important to us.",
-      successCountdown: "Redirecting you automatically in",
-      seconds: "seconds...",
-      backBtn: "Return now"
+      safetyBadge: "Safe & Verified Access",
+      successTitle: "WhatsApp Message Ready!",
+      successMessage: "We've prepared a pre-filled WhatsApp message for you. Send the message in WhatsApp so someone from our team can personally and safely add you to the community.",
+      openWhatsAppAgainBtn: "Open WhatsApp again",
+      emailFallbackPrompt: "Didn't WhatsApp open or prefer email?",
+      emailFallbackBtn: "Sign up via leidsehuiskamer@gmail.com",
+      backBtn: "Return to overview"
     },
     eetkamerScreen: {
       header: "The Dining Room",
       cardTitle: "When do we eat together again?",
-      cardSub: "Every other Wednesday evening",
+      cardSub: "Biweekly (every other Wednesday evening)",
       locTitle: "Location",
       locText: "Het Leidse Volkshuis",
-      whoTitle: "For who?",
-      whoText: "Young adults from 16 to 30 years old",
-      description: "Join us! The Dining Room is the perfect place to get to know new people while enjoying a delicious meal. It is all about being together, coziness, and of course good food. Everyone between 16 and 30 years old is very welcome in the Volkshuis."
+      whoTitle: "Who is it for?",
+      whoText: "Young adults from 16 to 30+ years",
+      description: "Join us! The Dining Room is the perfect place to get to know new people while enjoying a delicious meal. It is all about being together, coziness, and of course good food. Everyone from 16 to 30+ years is very welcome in the Volkshuis, regardless of background."
     },
     crafthubScreen: {
       header: "The Crafthub",
@@ -532,9 +590,9 @@ export const HuiskamerText = {
       cardSubExtra: "Open walk-in (often runs later!)",
       locTitle: "Location",
       locText: "Het Leidse Volkshuis",
-      whoTitle: "For who?",
-      whoText: "LGBTQIA+ youth & allies (16 to 30 years old)",
-      description: "The Queer Living Room is a warm, safe, and welcoming spot specially created for LGBTQIA+ young adults and allies in Leiden. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Whether you're here to have great chats, make new friends, play games, or simply unwind in an accepting environment: everyone is welcome!"
+      whoTitle: "Who is it for?",
+      whoText: "LGBTQIA+ youth & allies (16 to 30+ years)",
+      description: "The Queer Living Room is a warm, safe, and welcoming spot specially created for LGBTQIA+ young adults and allies in Leiden. Here it is all about real connection—stepping outside your own bubble, countering polarization by listening to one another, and giving young people a platform of their own. Whether you're here for great chats, new friends, games, or simply unwinding, everyone is welcome, regardless of background."
     },
     transjongerenScreen: {
       header: "Trans Youth Walk-in",
@@ -543,9 +601,9 @@ export const HuiskamerText = {
       cardSubExtra: "Open walk-in, flowing into The Queer Living Room",
       locTitle: "Location",
       locText: "Het Leidse Volkshuis",
-      whoTitle: "For who?",
-      whoText: "Transgender, non-binary, and questioning youth",
-      description: "The Trans Youth Walk-in is a trusted space to meet other young people walking similar paths. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Drop by for a cup of tea, open conversations, or just to hang out in a welcoming, judgment-free environment."
+      whoTitle: "Who is it for?",
+      whoText: "Transgender, non-binary, and questioning youth (16 to 30+ years)",
+      description: "The Trans Youth Walk-in is a trusted space to meet other young people walking similar paths. We give you and your peers a supportive platform to share stories, ask questions, and build community together in Leiden. Drop by for a cup of tea, open conversations, or simply to be yourself in a welcoming environment — everyone is welcome, regardless of background."
     }
   }
 };

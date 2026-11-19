@@ -9,7 +9,9 @@
       "supportsTablet": true
     },
     "web": {
-      "bundler": "metro"
+      "bundler": "metro",
+      "lang": "nl",
+      "name": "Stichting De Leidse Huiskamer"
     },
     "plugins": [
       "expo-status-bar"

@@ -1,27 +1,40 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import { BlurView } from 'expo-blur';
-import { ArrowRight } from 'lucide-react-native';
+import { ArrowRight, Mail } from 'lucide-react-native';
 import { useLanguage } from '../context/LanguageContext';
 import WhatsAppIcon from './WhatsAppIcon';
 
 export default function CommunityNotice({ navigation, isBusiness = false }) {
   const { t } = useLanguage();
-  const notice = t.communityNotice;
+  const isBiz = isBusiness === true;
+  const notice = isBiz ? t.business.communityNotice : t.communityNotice;
 
-  const CardWrapper = isBusiness ? View : BlurView;
-  const wrapperProps = isBusiness 
-    ? { style: styles.businessContainer } 
+  const CardWrapper = isBiz ? View : BlurView;
+  const wrapperProps = isBiz
+    ? { style: styles.businessContainer }
     : { intensity: 30, tint: 'dark', style: styles.container };
+
+  const handlePress = () => {
+    if (isBiz) {
+      Linking.openURL('mailto:leidsehuiskamer@gmail.com');
+    } else {
+      navigation.navigate('CommunityForm', { version: 'Jongeren' });
+    }
+  };
 
   return (
     <CardWrapper {...wrapperProps}>
       <View style={styles.headerRow}>
-        <View style={styles.iconCircle}>
-          <WhatsAppIcon size={24} color="#25D366" />
+        <View style={[styles.iconCircle, isBiz && styles.businessIconCircle]}>
+          {isBiz ? (
+            <Mail size={22} color="#00C9FF" />
+          ) : (
+            <WhatsAppIcon size={24} color="#25D366" />
+          )}
         </View>
         <View style={styles.headerTitles}>
-          <Text style={styles.badge}>{notice.badge}</Text>
+          <Text style={[styles.badge, isBiz && styles.businessBadge]}>{notice.badge}</Text>
           <Text style={styles.title}>{notice.title}</Text>
         </View>
       </View>
@@ -29,15 +42,16 @@ export default function CommunityNotice({ navigation, isBusiness = false }) {
       <Text style={styles.text}>{notice.text}</Text>
 
       <TouchableOpacity
-        style={styles.actionContainer}
-        onPress={() => navigation.navigate('CommunityForm')}
+        style={[styles.actionContainer, isBiz && styles.businessActionContainer]}
+        onPress={handlePress}
         activeOpacity={0.8}
+        accessibilityRole="button"
       >
         <Text style={styles.promptText}>
           {notice.prompt}{' '}
-          <Text style={styles.linkText}>{notice.link}</Text>
+          <Text style={[styles.linkText, isBiz && styles.businessLinkText]}>{notice.link}</Text>
         </Text>
-        <ArrowRight color="#25D366" size={18} style={styles.arrowIcon} />
+        <ArrowRight color={isBiz ? '#00C9FF' : '#25D366'} size={18} style={styles.arrowIcon} />
       </TouchableOpacity>
     </CardWrapper>
   );
@@ -57,7 +71,7 @@ const styles = StyleSheet.create({
     padding: 22,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: 'rgba(37, 211, 102, 0.2)',
+    borderColor: 'rgba(0, 201, 255, 0.25)',
     backgroundColor: 'rgba(255, 255, 255, 0.03)',
     marginVertical: 20,
   },
@@ -75,6 +89,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 14,
   },
+  businessIconCircle: {
+    backgroundColor: 'rgba(0, 201, 255, 0.14)',
+  },
   headerTitles: {
     flex: 1,
   },
@@ -85,6 +102,9 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 0.8,
     marginBottom: 2,
+  },
+  businessBadge: {
+    color: '#00C9FF',
   },
   title: {
     color: '#fff',
@@ -108,6 +128,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'rgba(37, 211, 102, 0.25)',
   },
+  businessActionContainer: {
+    backgroundColor: 'rgba(0, 201, 255, 0.1)',
+    borderColor: 'rgba(0, 201, 255, 0.25)',
+  },
   promptText: {
     color: '#fff',
     fontSize: 14,
@@ -119,6 +143,9 @@ const styles = StyleSheet.create({
     color: '#25D366',
     fontWeight: 'bold',
     textDecorationLine: 'underline',
+  },
+  businessLinkText: {
+    color: '#00C9FF',
   },
   arrowIcon: {
     marginLeft: 10,

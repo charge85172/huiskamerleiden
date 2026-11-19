@@ -5,11 +5,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
 import { useLanguage } from '../context/LanguageContext';
 
-export default function Hero({ version = 'Jongeren' }) {
+export default function Hero({ version = 'Jongeren', onVisitPress, onContactPress }) {
   const { t } = useLanguage();
   const { width } = useWindowDimensions();
   const isDesktop = width > 768;
-  const isBusiness = version === 'Bedrijven';
+  const isBusiness = version === 'Bedrijven' || version === 'business';
   const texts = isBusiness ? t.business.hero : t.hero;
 
   if (isBusiness) {
@@ -23,8 +23,13 @@ export default function Hero({ version = 'Jongeren' }) {
           {texts.titleStart}{texts.titlePink}{texts.titleMid1}{texts.titleCyan}{texts.titleMid2}{texts.titlePurple}{texts.titleEnd}
         </Text>
         <Text style={styles.businessSubtitle}>{texts.subtitle}</Text>
-        
-        <TouchableOpacity activeOpacity={0.8} style={styles.businessBtnWrap}>
+
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={styles.businessBtnWrap}
+          onPress={onContactPress}
+          accessibilityRole="button"
+        >
           <LinearGradient colors={['#00C9FF', '#4A00E0']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.primaryButton}>
             <Text style={styles.buttonText}>{texts.btn1}</Text>
             <ArrowRight color="#fff" size={20} />
@@ -32,7 +37,7 @@ export default function Hero({ version = 'Jongeren' }) {
         </TouchableOpacity>
 
         <View style={styles.businessImageWrapper}>
-          <Image 
+          <Image
             source={require('../images/huiskmaker-hartelijk-welkom.jpg')}
             style={styles.businessHeroImage}
             resizeMode="cover"
@@ -53,26 +58,40 @@ export default function Hero({ version = 'Jongeren' }) {
           <Sparkles size={16} color="#00C9FF" />
           <Text style={styles.pillText}>{texts.pill}</Text>
         </BlurView>
-        
+
         <Text style={[styles.title, isDesktop && { textAlign: 'left' }]}>
           {texts.titleStart}<Text style={styles.highlightPink}>{texts.titlePink}</Text>{texts.titleMid1}<Text style={styles.highlightCyan}>{texts.titleCyan}</Text>{texts.titleMid2}<Text style={styles.highlightPurple}>{texts.titlePurple}</Text>{texts.titleEnd}
         </Text>
-        
+
         <Text style={[styles.subtitle, isDesktop && { textAlign: 'left' }]}>{texts.subtitle}</Text>
-        
+
         <View style={[styles.buttonRow, isDesktop && { justifyContent: 'flex-start' }]}>
-          <TouchableOpacity activeOpacity={0.8} style={styles.btnWrap}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.btnWrap}
+            onPress={onVisitPress}
+            accessibilityRole="button"
+          >
             <LinearGradient colors={['#8E2DE2', '#4A00E0']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.primaryButton}>
               <Text style={styles.buttonText}>{texts.btn1}</Text>
               <ArrowRight color="#fff" size={20} />
             </LinearGradient>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={[styles.btnWrap, styles.secondaryButton]}
+            onPress={onContactPress}
+            accessibilityRole="button"
+          >
+            <Text style={styles.secondaryButtonText}>{texts.btn2}</Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <View style={[styles.youthImageSide, isDesktop && { flex: 1, marginTop: 0 }]}>
         <BlurView intensity={30} tint="dark" style={styles.imageContainer}>
-          <Image 
+          <Image
             source={require('../images/huiskmaker-hartelijk-welkom.jpg')}
             style={styles.heroImage}
             resizeMode="cover"
@@ -93,12 +112,23 @@ export default function Hero({ version = 'Jongeren' }) {
 const styles = StyleSheet.create({
   // Shared
   primaryButton: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 35, paddingVertical: 18, borderRadius: 35 },
+  secondaryButton: {
+    paddingHorizontal: 28,
+    paddingVertical: 18,
+    borderRadius: 35,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.25)',
+    backgroundColor: 'rgba(255,255,255,0.06)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  secondaryButtonText: { color: '#fff', fontSize: 18, fontWeight: 'bold' },
   buttonText: { color: '#fff', fontSize: 18, fontWeight: 'bold', marginRight: 10 },
   imageOverlayBadge: { position: 'absolute', bottom: 30, alignSelf: 'center', backgroundColor: 'rgba(0,0,0,0.6)', paddingHorizontal: 25, paddingVertical: 15, borderRadius: 30 },
   badgeText: { color: '#fff', fontSize: 18, fontWeight: 'bold' },
 
   // Business Styles
-  businessContainer: { padding: 20, paddingTop: 40, alignItems: 'center' },
+  businessContainer: { padding: 20, paddingTop: 40, alignItems: 'center', width: '100%', maxWidth: 1200, alignSelf: 'center' },
   businessPill: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 10, borderRadius: 30, marginBottom: 30, backgroundColor: 'rgba(255,255,255,0.05)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
   businessPillText: { color: '#fff', marginLeft: 10, fontWeight: '600', fontSize: 16 },
   businessTitle: { color: '#fff', fontSize: 46, fontWeight: 'bold', textAlign: 'center', marginBottom: 25, lineHeight: 56, maxWidth: 900 },
@@ -108,7 +138,7 @@ const styles = StyleSheet.create({
   businessHeroImage: { width: '100%', height: '100%' },
 
   // Youth Styles
-  youthContainer: { padding: 20, paddingTop: 40, alignItems: 'center' },
+  youthContainer: { padding: 20, paddingTop: 40, alignItems: 'center', width: '100%', maxWidth: 1200, alignSelf: 'center' },
   youthContainerDesktop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   youthTextSide: { alignItems: 'center', width: '100%' },
   youthImageSide: { width: '100%', alignItems: 'center', marginTop: 40 },

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Navbar from '../components/Navbar';
@@ -12,9 +12,36 @@ import Footer from '../components/Footer';
 
 export default function HomeScreen({ route, navigation }) {
   const [version, setVersion] = useState(route.params?.version || 'Jongeren');
+  const scrollViewRef = useRef(null);
+  const activitiesYRef = useRef(0);
+  const footerYRef = useRef(0);
+
+  useEffect(() => {
+    if (route.params?.version && route.params.version !== version) {
+      setVersion(route.params.version);
+    }
+  }, [route.params?.version]);
 
   const toggleVersion = () => {
-    setVersion(prev => (prev === 'Jongeren' ? 'Bedrijven' : 'Jongeren'));
+    const next = version === 'Jongeren' ? 'Bedrijven' : 'Jongeren';
+    setVersion(next);
+    navigation.setParams({ version: next });
+  };
+
+  const scrollToActivities = () => {
+    scrollViewRef.current?.scrollTo({ y: activitiesYRef.current, animated: true });
+  };
+
+  const scrollToFooter = () => {
+    scrollViewRef.current?.scrollTo({ y: footerYRef.current, animated: true });
+  };
+
+  const handleHeroContact = () => {
+    if (version === 'Bedrijven' || version === 'business') {
+      scrollToFooter();
+    } else {
+      navigation.navigate('CommunityForm', { version: 'Jongeren' });
+    }
   };
 
   return (
@@ -25,15 +52,31 @@ export default function HomeScreen({ route, navigation }) {
           style={StyleSheet.absoluteFillObject}
         />
       )}
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView ref={scrollViewRef} contentContainerStyle={styles.scrollContent}>
         <Navbar version={version} onVersionSwitch={toggleVersion} />
-        <Hero version={version} />
+        <Hero
+          version={version}
+          onVisitPress={scrollToActivities}
+          onContactPress={handleHeroContact}
+        />
         <About version={version} />
-        <Activities version={version} navigation={navigation} />
+        <View
+          onLayout={(event) => {
+            activitiesYRef.current = event.nativeEvent.layout.y;
+          }}
+        >
+          <Activities version={version} navigation={navigation} />
+        </View>
         <Goals version={version} />
         <ThirdPlace version={version} />
         <Info version={version} />
-        <Footer version={version} />
+        <View
+          onLayout={(event) => {
+            footerYRef.current = event.nativeEvent.layout.y;
+          }}
+        >
+          <Footer version={version} />
+        </View>
       </ScrollView>
     </View>
   );

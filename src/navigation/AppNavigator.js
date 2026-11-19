@@ -12,12 +12,31 @@ import CommunityFormScreen from '../screens/CommunityFormScreen';
 
 const Stack = createNativeStackNavigator();
 
+const linking = {
+  prefixes: [
+    'https://deleidsehuiskamer.nl',
+    'https://www.deleidsehuiskamer.nl',
+    'https://huiskamerleiden.vercel.app',
+  ],
+  config: {
+    screens: {
+      Intro: '',
+      Home: 'home',
+      Eetkamer: 'eetkamer',
+      Crafthub: 'crafthub',
+      QueerHuiskamer: 'queer-huiskamer',
+      Transjongeren: 'transjongeren',
+      CommunityForm: 'aanmelden',
+    },
+  },
+};
+
 export default function AppNavigator() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator 
+    <NavigationContainer linking={linking}>
+      <Stack.Navigator
         initialRouteName="Intro"
-        screenOptions={{ 
+        screenOptions={{
           headerShown: false,
           animation: 'slide_from_right'
         }}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -8,36 +8,100 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
-  SafeAreaView
+  SafeAreaView,
+  Linking
 } from 'react-native';
-import { ArrowLeft, CheckCircle2, ShieldCheck, Heart, AlertCircle } from 'lucide-react-native';
+import {
+  ArrowLeft,
+  CheckCircle2,
+  ShieldCheck,
+  AlertCircle,
+  Check,
+  Mail,
+  ExternalLink,
+  Building2
+} from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
 import { useLanguage } from '../context/LanguageContext';
 import WhatsAppIcon from '../components/WhatsAppIcon';
 
-export default function CommunityFormScreen({ navigation }) {
-  const { t } = useLanguage();
+export default function CommunityFormScreen({ route, navigation }) {
+  const { t, language } = useLanguage();
+  const isBusiness = route?.params?.version === 'Bedrijven' || route?.params?.version === 'business';
   const formTexts = t.communityForm;
+  const businessTexts = t.business.communityForm;
 
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [source, setSource] = useState('');
+  const [consent, setConsent] = useState(false);
 
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [countdown, setCountdown] = useState(5);
+  const [submittedUrls, setSubmittedUrls] = useState({ whatsapp: '', mailto: '' });
 
-  const timerRef = useRef(null);
+  const handleGoBack = () => {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    } else {
+      navigation.navigate('Home', { version: isBusiness ? 'Bedrijven' : 'Jongeren' });
+    }
+  };
+
+  const openExternalUrl = (url) => {
+    if (Platform.OS === 'web' && url.startsWith('https://') && typeof window !== 'undefined') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    Linking.openURL(url);
+  };
+
+  const clearError = (field) => {
+    if (errors[field]) {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next[field];
+        return next;
+      });
+    }
+  };
 
   const handleSubmit = () => {
     const newErrors = {};
-    if (!name.trim()) newErrors.name = true;
-    if (!age.trim()) newErrors.age = true;
-    if (!phone.trim()) newErrors.phone = true;
-    if (!source.trim()) newErrors.source = true;
+    const trimmedName = name.trim();
+    const trimmedAge = age.trim();
+    const trimmedPhone = phone.trim();
+    const trimmedEmail = email.trim();
+    const trimmedSource = source.trim();
+
+    if (!trimmedName) {
+      newErrors.name = formTexts.nameError;
+    }
+
+    const ageNum = Number(trimmedAge);
+    if (!/^\d{1,3}$/.test(trimmedAge) || ageNum < 12 || ageNum > 120) {
+      newErrors.age = formTexts.ageError;
+    }
+
+    const normalizedPhone = trimmedPhone.replace(/[\s\-().]/g, '');
+    if (!/^\+?\d{9,15}$/.test(normalizedPhone)) {
+      newErrors.phone = formTexts.phoneError;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(trimmedEmail)) {
+      newErrors.email = formTexts.emailError;
+    }
+
+    if (!trimmedSource) {
+      newErrors.source = formTexts.sourceError;
+    }
+
+    if (!consent) {
+      newErrors.consent = formTexts.consentError;
+    }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -45,35 +109,38 @@ export default function CommunityFormScreen({ navigation }) {
     }
 
     setErrors({});
+
+    const message = language === 'nl'
+      ? [
+          'Hoi Stichting De Leidse Huiskamer! Ik wil mij graag aanmelden voor de WhatsApp-community.',
+          '',
+          `Naam: ${trimmedName}`,
+          `Leeftijd: ${trimmedAge}`,
+          `Telefoonnummer: ${trimmedPhone}`,
+          `E-mailadres: ${trimmedEmail}`,
+          `Via: ${trimmedSource}`,
+          'AVG-toestemming: Ja, ik ga akkoord dat mijn gegevens worden gebruikt om mij toe te voegen aan de WhatsApp-community.'
+        ].join('\n')
+      : [
+          'Hi Stichting De Leidse Huiskamer! I would like to sign up for the WhatsApp community.',
+          '',
+          `Name: ${trimmedName}`,
+          `Age: ${trimmedAge}`,
+          `Phone: ${trimmedPhone}`,
+          `Email: ${trimmedEmail}`,
+          `Found via: ${trimmedSource}`,
+          'GDPR consent: Yes, I agree that my details may be used to add me to the WhatsApp community.'
+        ].join('\n');
+
+    const whatsappUrl = `https://wa.me/31615585172?text=${encodeURIComponent(message)}`;
+    const subject = language === 'nl'
+      ? 'Aanmelding WhatsApp-community – De Leidse Huiskamer'
+      : 'WhatsApp Community Sign-up – De Leidse Huiskamer';
+    const mailtoUrl = `mailto:leidsehuiskamer@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+    setSubmittedUrls({ whatsapp: whatsappUrl, mailto: mailtoUrl });
     setIsSubmitted(true);
-  };
-
-  useEffect(() => {
-    if (isSubmitted) {
-      let secondsLeft = 5;
-      setCountdown(secondsLeft);
-      timerRef.current = setInterval(() => {
-        secondsLeft -= 1;
-        setCountdown(secondsLeft);
-        if (secondsLeft <= 0) {
-          clearInterval(timerRef.current);
-          navigation.goBack();
-        }
-      }, 1000);
-    }
-
-    return () => {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
-    };
-  }, [isSubmitted, navigation]);
-
-  const handleReturnNow = () => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-    }
-    navigation.goBack();
+    openExternalUrl(whatsappUrl);
   };
 
   return (
@@ -82,11 +149,15 @@ export default function CommunityFormScreen({ navigation }) {
 
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
-          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-            <ArrowLeft color="#fff" size={24} />
-          </TouchableOpacity>
-          <Text style={styles.headerTitle}>{formTexts.header}</Text>
-          <View style={{ width: 24 }} />
+          <View style={styles.headerInner}>
+            <TouchableOpacity onPress={handleGoBack} style={styles.backButton} accessibilityRole="button">
+              <ArrowLeft color="#fff" size={24} />
+            </TouchableOpacity>
+            <Text style={styles.headerTitle}>
+              {isBusiness ? businessTexts.header : formTexts.header}
+            </Text>
+            <View style={{ width: 36 }} />
+          </View>
         </View>
 
         <KeyboardAvoidingView
@@ -97,32 +168,106 @@ export default function CommunityFormScreen({ navigation }) {
             contentContainerStyle={styles.scrollContent}
             keyboardShouldPersistTaps="handled"
           >
-            {isSubmitted ? (
+            {isBusiness ? (
+              <View style={styles.businessCard}>
+                <View style={styles.businessIconCircle}>
+                  <Building2 color="#00C9FF" size={34} />
+                </View>
+
+                <Text style={styles.businessTitle}>{businessTexts.title}</Text>
+                <Text style={styles.businessSubtitle}>{businessTexts.subtitle}</Text>
+
+                <TouchableOpacity
+                  activeOpacity={0.85}
+                  style={styles.submitBtnWrap}
+                  onPress={() => openExternalUrl('mailto:leidsehuiskamer@gmail.com')}
+                  accessibilityRole="button"
+                >
+                  <LinearGradient
+                    colors={['#00C9FF', '#4A00E0']}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={styles.submitButton}
+                  >
+                    <Mail size={20} color="#fff" style={{ marginRight: 10 }} />
+                    <Text style={styles.submitButtonText}>{businessTexts.emailBtn}</Text>
+                  </LinearGradient>
+                </TouchableOpacity>
+
+                <View style={styles.officialInfoBox}>
+                  <Text style={styles.officialInfoTitle}>{businessTexts.infoTitle}</Text>
+                  <Text style={styles.officialInfoText}>{t.footer.organization}</Text>
+                  <Text style={styles.officialInfoText}>
+                    {t.footer.building}, {t.footer.address1}, {t.footer.address2}
+                  </Text>
+                  <Text style={styles.officialInfoText}>{t.footer.kvk}</Text>
+                </View>
+
+                <TouchableOpacity
+                  style={styles.switchLinkBtn}
+                  onPress={() => navigation.setParams({ version: 'Jongeren' })}
+                  activeOpacity={0.8}
+                >
+                  <Text style={styles.switchLinkText}>{businessTexts.switchToYouthLink}</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={styles.returnButton}
+                  onPress={handleGoBack}
+                  activeOpacity={0.8}
+                >
+                  <Text style={styles.returnButtonText}>{businessTexts.backBtn}</Text>
+                </TouchableOpacity>
+              </View>
+            ) : isSubmitted ? (
               <BlurView intensity={35} tint="dark" style={styles.successCard}>
                 <View style={styles.successIconCircle}>
                   <CheckCircle2 color="#25D366" size={60} />
                 </View>
 
                 <Text style={styles.successTitle}>{formTexts.successTitle}</Text>
-                
+
                 <View style={styles.safetyBadge}>
                   <ShieldCheck color="#25D366" size={18} />
-                  <Text style={styles.safetyBadgeText}>Veilige & Gecontroleerde Toegang</Text>
+                  <Text style={styles.safetyBadgeText}>{formTexts.safetyBadge}</Text>
                 </View>
 
                 <Text style={styles.successMessage}>{formTexts.successMessage}</Text>
 
-                <View style={styles.countdownBox}>
-                  <Text style={styles.countdownText}>
-                    {formTexts.successCountdown}{' '}
-                    <Text style={styles.countdownNumber}>{countdown}</Text>{' '}
-                    {formTexts.seconds}
-                  </Text>
+                <TouchableOpacity
+                  activeOpacity={0.85}
+                  style={[styles.submitBtnWrap, { width: '100%' }]}
+                  onPress={() => openExternalUrl(submittedUrls.whatsapp)}
+                  accessibilityRole="button"
+                >
+                  <LinearGradient
+                    colors={['#25D366', '#128C7E']}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={styles.submitButton}
+                  >
+                    <WhatsAppIcon size={20} color="#fff" style={{ marginRight: 10 }} />
+                    <Text style={styles.submitButtonText}>{formTexts.openWhatsAppAgainBtn}</Text>
+                    <ExternalLink size={16} color="#fff" style={{ marginLeft: 8 }} />
+                  </LinearGradient>
+                </TouchableOpacity>
+
+                <View style={styles.fallbackBox}>
+                  <Text style={styles.fallbackPrompt}>{formTexts.emailFallbackPrompt}</Text>
+                  <TouchableOpacity
+                    style={styles.fallbackButton}
+                    onPress={() => openExternalUrl(submittedUrls.mailto)}
+                    activeOpacity={0.8}
+                    accessibilityRole="button"
+                  >
+                    <Mail size={18} color="#00C9FF" style={{ marginRight: 8 }} />
+                    <Text style={styles.fallbackButtonText}>{formTexts.emailFallbackBtn}</Text>
+                  </TouchableOpacity>
                 </View>
 
                 <TouchableOpacity
                   style={styles.returnButton}
-                  onPress={handleReturnNow}
+                  onPress={handleGoBack}
                   activeOpacity={0.8}
                 >
                   <Text style={styles.returnButtonText}>{formTexts.backBtn}</Text>
@@ -155,10 +300,14 @@ export default function CommunityFormScreen({ navigation }) {
                   <TextInput
                     style={[styles.input, errors.name && styles.inputError]}
                     placeholder={formTexts.namePlaceholder}
-                    placeholderTextColor="rgba(255,255,255,0.4)"
+                    placeholderTextColor="rgba(255,255,255,0.55)"
                     value={name}
-                    onChangeText={setName}
+                    onChangeText={(val) => {
+                      setName(val);
+                      clearError('name');
+                    }}
                   />
+                  {errors.name && <Text style={styles.fieldError}>{errors.name}</Text>}
                 </View>
 
                 {/* Age */}
@@ -167,11 +316,15 @@ export default function CommunityFormScreen({ navigation }) {
                   <TextInput
                     style={[styles.input, errors.age && styles.inputError]}
                     placeholder={formTexts.agePlaceholder}
-                    placeholderTextColor="rgba(255,255,255,0.4)"
+                    placeholderTextColor="rgba(255,255,255,0.55)"
                     keyboardType="numeric"
                     value={age}
-                    onChangeText={setAge}
+                    onChangeText={(val) => {
+                      setAge(val);
+                      clearError('age');
+                    }}
                   />
+                  {errors.age && <Text style={styles.fieldError}>{errors.age}</Text>}
                 </View>
 
                 {/* WhatsApp Phone */}
@@ -180,25 +333,33 @@ export default function CommunityFormScreen({ navigation }) {
                   <TextInput
                     style={[styles.input, errors.phone && styles.inputError]}
                     placeholder={formTexts.phonePlaceholder}
-                    placeholderTextColor="rgba(255,255,255,0.4)"
+                    placeholderTextColor="rgba(255,255,255,0.55)"
                     keyboardType="phone-pad"
                     value={phone}
-                    onChangeText={setPhone}
+                    onChangeText={(val) => {
+                      setPhone(val);
+                      clearError('phone');
+                    }}
                   />
+                  {errors.phone && <Text style={styles.fieldError}>{errors.phone}</Text>}
                 </View>
 
-                {/* Email (Optional) */}
+                {/* Email */}
                 <View style={styles.inputGroup}>
                   <Text style={styles.label}>{formTexts.emailLabel}</Text>
                   <TextInput
-                    style={styles.input}
+                    style={[styles.input, errors.email && styles.inputError]}
                     placeholder={formTexts.emailPlaceholder}
-                    placeholderTextColor="rgba(255,255,255,0.4)"
+                    placeholderTextColor="rgba(255,255,255,0.55)"
                     keyboardType="email-address"
                     autoCapitalize="none"
                     value={email}
-                    onChangeText={setEmail}
+                    onChangeText={(val) => {
+                      setEmail(val);
+                      clearError('email');
+                    }}
                   />
+                  {errors.email && <Text style={styles.fieldError}>{errors.email}</Text>}
                 </View>
 
                 {/* Source */}
@@ -207,13 +368,43 @@ export default function CommunityFormScreen({ navigation }) {
                   <TextInput
                     style={[styles.input, styles.textArea, errors.source && styles.inputError]}
                     placeholder={formTexts.sourcePlaceholder}
-                    placeholderTextColor="rgba(255,255,255,0.4)"
+                    placeholderTextColor="rgba(255,255,255,0.55)"
                     multiline
                     numberOfLines={3}
                     textAlignVertical="top"
                     value={source}
-                    onChangeText={setSource}
+                    onChangeText={(val) => {
+                      setSource(val);
+                      clearError('source');
+                    }}
                   />
+                  {errors.source && <Text style={styles.fieldError}>{errors.source}</Text>}
+                </View>
+
+                {/* Mandatory GDPR / AVG Consent Checkbox */}
+                <View style={styles.inputGroup}>
+                  <TouchableOpacity
+                    activeOpacity={0.8}
+                    style={[styles.consentRow, errors.consent && styles.consentRowError]}
+                    onPress={() => {
+                      setConsent((prev) => !prev);
+                      clearError('consent');
+                    }}
+                    accessibilityRole="checkbox"
+                    accessibilityState={{ checked: consent }}
+                  >
+                    <View
+                      style={[
+                        styles.checkbox,
+                        consent && styles.checkboxChecked,
+                        errors.consent && !consent && styles.checkboxError
+                      ]}
+                    >
+                      {consent && <Check size={15} color="#fff" />}
+                    </View>
+                    <Text style={styles.consentText}>{formTexts.consentLabel}</Text>
+                  </TouchableOpacity>
+                  {errors.consent && <Text style={styles.fieldError}>{errors.consent}</Text>}
                 </View>
 
                 {/* Submit button */}
@@ -221,6 +412,7 @@ export default function CommunityFormScreen({ navigation }) {
                   activeOpacity={0.8}
                   style={styles.submitBtnWrap}
                   onPress={handleSubmit}
+                  accessibilityRole="button"
                 >
                   <LinearGradient
                     colors={['#25D366', '#128C7E']}
@@ -255,14 +447,19 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingTop: Platform.OS === 'android' ? 40 : 15,
+    paddingTop: Platform.OS === 'web' ? 20 : Platform.OS === 'android' ? 40 : 18,
     paddingBottom: 15,
     paddingHorizontal: 20,
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(255,255,255,0.1)',
+  },
+  headerInner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    maxWidth: 1200,
+    alignSelf: 'center',
   },
   backButton: {
     padding: 6,
@@ -273,6 +470,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#fff',
+    textAlign: 'center',
+    flex: 1,
   },
   scrollContent: {
     padding: 20,
@@ -327,9 +526,10 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   errorBannerText: {
-    color: '#ff7875',
+    color: '#ff9c9e',
     fontSize: 14,
     fontWeight: '500',
+    flex: 1,
   },
   inputGroup: {
     marginBottom: 20,
@@ -354,26 +554,71 @@ const styles = StyleSheet.create({
     borderColor: '#ff4d4f',
     backgroundColor: 'rgba(255, 77, 79, 0.08)',
   },
+  fieldError: {
+    color: '#ff8a8c',
+    fontSize: 13,
+    marginTop: 6,
+  },
   textArea: {
     minHeight: 90,
+  },
+  consentRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    backgroundColor: 'rgba(255,255,255,0.04)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.14)',
+    borderRadius: 14,
+    padding: 14,
+    gap: 12,
+  },
+  consentRowError: {
+    borderColor: '#ff4d4f',
+    backgroundColor: 'rgba(255, 77, 79, 0.08)',
+  },
+  checkbox: {
+    width: 22,
+    height: 22,
+    borderRadius: 6,
+    borderWidth: 2,
+    borderColor: 'rgba(255,255,255,0.45)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 1,
+  },
+  checkboxChecked: {
+    backgroundColor: '#25D366',
+    borderColor: '#25D366',
+  },
+  checkboxError: {
+    borderColor: '#ff4d4f',
+  },
+  consentText: {
+    color: '#e5e7eb',
+    fontSize: 14,
+    lineHeight: 20,
+    flex: 1,
   },
   submitBtnWrap: {
     marginTop: 10,
     marginBottom: 16,
     borderRadius: 30,
     overflow: 'hidden',
+    width: '100%',
   },
   submitButton: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 18,
+    paddingHorizontal: 20,
     borderRadius: 30,
   },
   submitButtonText: {
     color: '#fff',
     fontSize: 17,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   safetyBox: {
     flexDirection: 'row',
@@ -383,7 +628,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   safetyText: {
-    color: '#9ca3af',
+    color: '#b0b8c5',
     fontSize: 12,
     lineHeight: 18,
     textAlign: 'center',
@@ -400,7 +645,7 @@ const styles = StyleSheet.create({
     maxWidth: 600,
     alignSelf: 'center',
     width: '100%',
-    marginVertical: 40,
+    marginVertical: 30,
     overflow: 'hidden',
   },
   successIconCircle: {
@@ -439,23 +684,39 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 26,
     textAlign: 'center',
-    marginBottom: 25,
+    marginBottom: 20,
   },
-  countdownBox: {
-    backgroundColor: 'rgba(255,255,255,0.06)',
-    paddingHorizontal: 20,
+  fallbackBox: {
+    width: '100%',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255,255,255,0.04)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.12)',
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: 22,
+  },
+  fallbackPrompt: {
+    color: '#b0b8c5',
+    fontSize: 13,
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  fallbackButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingVertical: 10,
+    paddingHorizontal: 16,
     borderRadius: 20,
-    marginBottom: 25,
+    backgroundColor: 'rgba(0, 201, 255, 0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 201, 255, 0.35)',
   },
-  countdownText: {
-    color: '#9ca3af',
+  fallbackButtonText: {
+    color: '#7ce7ff',
     fontSize: 14,
-  },
-  countdownNumber: {
-    color: '#25D366',
-    fontWeight: 'bold',
-    fontSize: 18,
+    fontWeight: '600',
   },
   returnButton: {
     backgroundColor: 'rgba(255,255,255,0.1)',
@@ -469,5 +730,75 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 15,
     fontWeight: '600',
+    textAlign: 'center',
+  },
+  // Business contact card styles
+  businessCard: {
+    padding: 30,
+    borderRadius: 24,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 201, 255, 0.3)',
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+    maxWidth: 650,
+    alignSelf: 'center',
+    width: '100%',
+    marginVertical: 20,
+  },
+  businessIconCircle: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    backgroundColor: 'rgba(0, 201, 255, 0.12)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 18,
+  },
+  businessTitle: {
+    color: '#fff',
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 12,
+  },
+  businessSubtitle: {
+    color: '#d1d5db',
+    fontSize: 16,
+    lineHeight: 25,
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  officialInfoBox: {
+    width: '100%',
+    backgroundColor: 'rgba(255,255,255,0.04)',
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.1)',
+    padding: 18,
+    marginTop: 6,
+    marginBottom: 20,
+  },
+  officialInfoTitle: {
+    color: '#00C9FF',
+    fontSize: 13,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    letterSpacing: 0.8,
+    marginBottom: 8,
+  },
+  officialInfoText: {
+    color: '#e5e7eb',
+    fontSize: 15,
+    lineHeight: 22,
+  },
+  switchLinkBtn: {
+    marginBottom: 20,
+    paddingHorizontal: 10,
+  },
+  switchLinkText: {
+    color: '#9ca3af',
+    fontSize: 13,
+    textDecorationLine: 'underline',
+    textAlign: 'center',
   },
 });

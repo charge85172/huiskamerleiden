@@ -1,5 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, useWindowDimensions, Animated, LayoutAnimation, Platform, UIManager, SafeAreaView } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  useWindowDimensions,
+  Animated,
+  LayoutAnimation,
+  Platform,
+  UIManager,
+  SafeAreaView
+} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import HuiskamerLogo from '../components/HuiskamerLogo';
 import { useLanguage } from '../context/LanguageContext';
@@ -12,13 +23,25 @@ export default function IntroScreen({ navigation }) {
   const { width } = useWindowDimensions();
   const { toggleLanguage, t } = useLanguage();
   const isDesktop = width > 768;
+  const isDesktopRef = useRef(isDesktop);
   const [showContent, setShowContent] = useState(false);
   const [countdown, setCountdown] = useState(10);
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const timerRef = useRef(null);
 
+  useEffect(() => {
+    isDesktopRef.current = isDesktop;
+    if (isDesktop && timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+  }, [isDesktop]);
+
   const startTimer = () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
     let timeLeft = 10;
     setCountdown(timeLeft);
     timerRef.current = setInterval(() => {
@@ -26,31 +49,42 @@ export default function IntroScreen({ navigation }) {
       setCountdown(timeLeft);
       if (timeLeft <= 0) {
         clearInterval(timerRef.current);
-        navigation.replace('Home', { version: isDesktop ? 'Bedrijven' : 'Jongeren' });
+        timerRef.current = null;
+        navigation.replace('Home', { version: 'Jongeren' });
       }
     }, 1000);
   };
 
   const handleAnimationComplete = () => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    if (Platform.OS !== 'web') {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    }
     setShowContent(true);
     Animated.timing(fadeAnim, {
       toValue: 1,
       duration: 800,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
 
-    startTimer();
+    if (!isDesktopRef.current) {
+      startTimer();
+    }
   };
 
   useEffect(() => {
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
     };
   }, []);
 
   const handleNavigate = (target) => {
-    if (timerRef.current) clearInterval(timerRef.current);
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
     navigation.replace('Home', { version: target });
   };
 
@@ -69,39 +103,39 @@ export default function IntroScreen({ navigation }) {
           <HuiskamerLogo size={180} color="#fe010b" animated={true} onAnimationComplete={handleAnimationComplete} />
         </View>
 
-      {showContent && (
-        <Animated.View style={[styles.textContent, { opacity: fadeAnim }]}>
-          <Text style={styles.welcomeText}>
-            {t.intro.welcomeText}
-          </Text>
+        {showContent && (
+          <Animated.View style={[styles.textContent, { opacity: fadeAnim }]}>
+            <Text style={styles.welcomeText}>
+              {t.intro.welcomeText}
+            </Text>
 
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              activeOpacity={0.8}
-              style={styles.buttonWrap}
-              onPress={() => handleNavigate('Jongeren')}
-            >
-              <LinearGradient colors={['#00C9FF', '#92FE9D']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.button}>
-                <Text style={styles.buttonText}>
-                  {t.intro.youthBtn} {!isDesktop ? `(${countdown}s)` : ''}
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                style={[styles.buttonWrap, isDesktop && styles.buttonWrapDesktop]}
+                onPress={() => handleNavigate('Jongeren')}
+              >
+                <LinearGradient colors={['#00C9FF', '#92FE9D']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    {t.intro.youthBtn}{!isDesktop ? ` (${countdown}s)` : ''}
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
 
-            <TouchableOpacity
-              activeOpacity={0.8}
-              style={styles.buttonWrap}
-              onPress={() => handleNavigate('Bedrijven')}
-            >
-              <LinearGradient colors={['#8E2DE2', '#4A00E0']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.button}>
-                <Text style={styles.buttonText}>
-                  {t.intro.businessBtn} {isDesktop ? `(${countdown}s)` : ''}
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity>
-          </View>
-        </Animated.View>
-      )}
+              <TouchableOpacity
+                activeOpacity={0.8}
+                style={[styles.buttonWrap, isDesktop && styles.buttonWrapDesktop]}
+                onPress={() => handleNavigate('Bedrijven')}
+              >
+                <LinearGradient colors={['#8E2DE2', '#4A00E0']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    {t.intro.businessBtn}
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+          </Animated.View>
+        )}
       </SafeAreaView>
     </View>
   );
@@ -124,16 +158,16 @@ const styles = StyleSheet.create({
     right: 20,
     zIndex: 10,
   },
-  langButton: { 
-    backgroundColor: 'rgba(255,255,255,0.1)', 
-    paddingHorizontal: 12, 
-    paddingVertical: 6, 
-    borderRadius: 12 
+  langButton: {
+    backgroundColor: 'rgba(255,255,255,0.1)',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 12
   },
-  langText: { 
-    color: '#fff', 
-    fontWeight: 'bold', 
-    fontSize: 14 
+  langText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 14
   },
   logoContainer: {
     alignItems: 'center',
@@ -161,18 +195,24 @@ const styles = StyleSheet.create({
   },
   buttonWrap: {
     marginBottom: 15,
+    width: '100%',
+    maxWidth: 320,
+  },
+  buttonWrapDesktop: {
+    width: 320,
   },
   button: {
-    paddingHorizontal: 30,
+    width: '100%',
+    paddingHorizontal: 24,
     paddingVertical: 18,
     borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    minWidth: 320,
   },
   buttonText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
+    textAlign: 'center',
   }
 });

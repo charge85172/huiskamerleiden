@@ -1,13 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import { MessagesSquare, Paintbrush, Coffee, ArrowRight } from 'lucide-react-native';
+import { View, Text, StyleSheet, Image, useWindowDimensions } from 'react-native';
+import { MessagesSquare, Paintbrush, Coffee } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function Info({ version = 'Jongeren' }) {
   const { t } = useLanguage();
-  const isBusiness = version === 'Bedrijven';
+  const { width } = useWindowDimensions();
+  const isDesktop = width > 768;
+  const isBusiness = version === 'Bedrijven' || version === 'business';
   const texts = isBusiness ? t.business.info : t.info;
 
   const CardWrapper = isBusiness ? View : BlurView;
@@ -29,7 +31,7 @@ export default function Info({ version = 'Jongeren' }) {
       </CardWrapper>
 
       <CardWrapper {...wrapperProps}>
-        <Paintbrush size={36} color={isBusiness ? '#00C9FF' : "#00C9FF"} style={styles.icon} />
+        <Paintbrush size={36} color="#00C9FF" style={styles.icon} />
         <Text style={styles.cardTitle}>{texts.card2Title}</Text>
         <Text style={styles.cardText}>{texts.card2Text}</Text>
       </CardWrapper>
@@ -40,9 +42,17 @@ export default function Info({ version = 'Jongeren' }) {
         <Text style={styles.cardText}>{texts.card3Text}</Text>
       </CardWrapper>
 
-      <View style={styles.imageGrid}>
-        <Image source={require('../images/huiskmaker-goed-gesprek.jpg')} style={styles.photo} />
-        <Image source={require('../images/huiskmaker-plannen-maken.jpg')} style={[styles.photo, { marginTop: 15 }]} />
+      <View style={[styles.imageGrid, isDesktop && styles.imageGridDesktop]}>
+        <Image
+          source={require('../images/huiskmaker-goed-gesprek.jpg')}
+          style={[styles.photo, isDesktop && styles.photoDesktop]}
+          resizeMode="cover"
+        />
+        <Image
+          source={require('../images/huiskmaker-plannen-maken.jpg')}
+          style={[styles.photo, isDesktop ? styles.photoDesktop : styles.photoStackedSecond]}
+          resizeMode="cover"
+        />
       </View>
 
       <LinearGradient
@@ -59,7 +69,7 @@ export default function Info({ version = 'Jongeren' }) {
 }
 
 const styles = StyleSheet.create({
-  container: { padding: 20, paddingTop: 40 },
+  container: { padding: 20, paddingTop: 40, width: '100%', maxWidth: 1200, alignSelf: 'center' },
   heading: { fontSize: 36, fontWeight: 'bold', color: '#fff', marginBottom: 40, textAlign: 'center' },
   highlight: { color: '#00C9FF' },
   highlightBusiness: { color: '#00C9FF' },
@@ -69,7 +79,10 @@ const styles = StyleSheet.create({
   cardTitle: { color: '#fff', fontSize: 24, fontWeight: 'bold', marginBottom: 15 },
   cardText: { color: '#b3b3b3', fontSize: 16, lineHeight: 26 },
   imageGrid: { marginTop: 20, marginBottom: 40 },
+  imageGridDesktop: { flexDirection: 'row', gap: 20 },
   photo: { width: '100%', aspectRatio: 4/3, borderRadius: 20 },
+  photoDesktop: { flex: 1, maxHeight: 420 },
+  photoStackedSecond: { marginTop: 15 },
   gradientCard: { padding: 30, borderRadius: 25, alignItems: 'center' },
   gradientTitle: { color: '#fff', fontSize: 26, fontWeight: 'bold', marginBottom: 20, textAlign: 'center' },
   gradientText: { color: 'rgba(255,255,255,0.9)', fontSize: 16, lineHeight: 26, textAlign: 'center' }
